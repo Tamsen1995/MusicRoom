@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>548947386302-o6qd9a3rel4jgs33k97tjiv1nq1pjv8g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.548947386302-o6qd9a3rel4jgs33k97tjiv1nq1pjv8g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyATbseurg4ITDp8urz_NANwexQ4jeMOzWw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>548947386302</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tbui.MusicRoom</string>
+	<key>PROJECT_ID</key>
+	<string>musicroom-1250a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>musicroom-1250a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:548947386302:ios:2d4af5bf158bfbb4</string>
+	<key>DATABASE_URL</key>
+	<string>https://musicroom-1250a.firebaseio.com</string>
+</dict>
+</plist>
