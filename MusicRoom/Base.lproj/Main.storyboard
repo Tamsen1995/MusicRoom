@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,12 +32,22 @@
                                     <segue destination="cIr-Ss-Hbw" kind="show" id="yPh-bg-tXp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHW-1b-fZ8">
+                                <rect key="frame" x="162" y="490" width="50" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dhj-AC-cAO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fqM-gS-0Ca" secondAttribute="bottom" constant="31" id="DMZ-UG-Bul"/>
                             <constraint firstItem="dEE-ZV-xYy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JPM-ZB-uQd"/>
+                            <constraint firstItem="DHW-1b-fZ8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="162" id="NAI-Js-PfC"/>
                             <constraint firstItem="fqM-gS-0Ca" firstAttribute="top" secondItem="dEE-ZV-xYy" secondAttribute="bottom" constant="17" id="PiW-rc-XX4"/>
+                            <constraint firstItem="dEE-ZV-xYy" firstAttribute="top" secondItem="DHW-1b-fZ8" secondAttribute="bottom" constant="39" id="Quz-yU-DrZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DHW-1b-fZ8" secondAttribute="trailing" constant="163" id="Yg5-Zr-Wfl"/>
                             <constraint firstItem="fqM-gS-0Ca" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ayy-fj-dpK"/>
                             <constraint firstItem="fqM-gS-0Ca" firstAttribute="top" secondItem="dEE-ZV-xYy" secondAttribute="bottom" constant="17" id="byC-yj-5GP"/>
                             <constraint firstItem="dEE-ZV-xYy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dL9-qU-2Lw"/>

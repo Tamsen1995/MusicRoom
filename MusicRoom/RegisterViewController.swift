@@ -17,6 +17,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    //    FirebaseManage.shared.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -26,18 +27,21 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+
+    
+    
     @IBAction func registerPressed(_ sender: Any) {
         
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {
-            (user, error) in
-            if error != nil {
-                print(error!)
-            } else {
-                // success
-                print("Registration successful !")
-                self.performSegue(withIdentifier: "registeredSegue", sender: self)
-            }
-        }
+        // TODO : Change this so it validates
+        // the username and password before initializing
+        let user = userData(emailTextField.text!, passwordTextField.text!)
+
+
+        
+        FirebaseManage.shared.createUserInDB(user)
+        self.performSegue(withIdentifier: "registeredSegue", sender: self)
     }
     
 
