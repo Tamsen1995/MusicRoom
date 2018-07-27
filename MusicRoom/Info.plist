@@ -52,5 +52,29 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb244235179739901</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>244235179739901</string>
+    <key>FacebookDisplayName</key>
+    <string>MusicRoom</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We want to get your profile picture for this app</string>
+    
 </dict>
 </plist>

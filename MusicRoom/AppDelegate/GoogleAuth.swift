@@ -37,9 +37,6 @@ extension AppDelegate {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-    }
+ 
     
 }
