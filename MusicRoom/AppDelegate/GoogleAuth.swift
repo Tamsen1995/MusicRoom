@@ -13,6 +13,7 @@ import FirebaseUI
 
 extension AppDelegate {
     
+    // Is called as soon as a user signs in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let error = error {
             print("\n\nAn error in the signIn method has occurred : ", error)

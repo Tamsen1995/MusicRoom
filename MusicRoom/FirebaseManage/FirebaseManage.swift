@@ -27,7 +27,6 @@ class FirebaseManage {
     
     private init () {
         print("\n\nInitializing Firebase\n\n") // TESTING
-//        FirebaseApp.configure()
     }
     
 }

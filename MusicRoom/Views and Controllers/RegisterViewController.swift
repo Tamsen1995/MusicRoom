@@ -38,8 +38,6 @@ class RegisterViewController: UIViewController {
         // the username and password before initializing
         let user = userData(emailTextField.text!, passwordTextField.text!)
 
-
-        
         FirebaseManage.shared.createUserInDB(user)
         self.performSegue(withIdentifier: "registeredSegue", sender: self)
     }
