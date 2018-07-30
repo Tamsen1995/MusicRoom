@@ -12,20 +12,55 @@ import GoogleSignIn
 import FBSDKLoginKit
 import FacebookLogin
 
-class LogRegController: UIViewController, GIDSignInUIDelegate {
+class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
+    
+
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
+//    @IBOutlet weak var userIdLabel: UILabel!
+//    @IBOutlet weak var userNameLabel: UILabel!
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print("\nInside of loginButton\n") // TESTING
+        if let result = result {
+            print("\nResult is", result) // TESTING
+//            self.userIdLabel.text = result.token.userID
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("\nInside of loginButtonDidLogOut\n") // TESTING
+    }
+    
     
     var dict : [String : AnyObject]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-        loginButton.center = view.center
-        view.addSubview(loginButton)
+        loginButton.delegate = self
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        FBSDKProfile.enableUpdates(onAccessTokenChange: true)
         
+
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.FBSDKProfileDidChange, object: nil, queue: nil) { (Notification) in
+            if let profile = FBSDKProfile.current(), let firstName = profile.firstName, let lastName = profile.lastName {
+                print("\(firstName)") // TESTING
+//                self.userNameLabel.text = "\(firstName)"
+            } else {
+                print("Unknown") // TESTING
+//                self.userNameLabel.text = "Unknown"
+            }
+        }
+        
+//
+//        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+//        loginButton.center = view.center
+//        view.addSubview(loginButton)
+//
         
         //if the user is already logged in
-        if let accessToken = FBSDKAccessToken.current(){
+        if let accessToken = FBSDKAccessToken.current() {
             getFBUserData()
         }
         // checks if the user is logged in
@@ -34,30 +69,20 @@ class LogRegController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
-    /////////////////////////// when the fb button is clicked
-    //when login button clicked
-    @objc func loginButtonClicked() {
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [ .publicProfile ], viewController: self) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                self.getFBUserData()
-            }
-        }
-    }
+
     
     //function is fetching the user data
-    func getFBUserData(){
-        if((FBSDKAccessToken.current()) != nil){
+    func getFBUserData() {
+        print("\nInside of getFBUserData\n") // TESTING
+        if ((FBSDKAccessToken.current()) != nil) {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil){
+                if (error == nil) {
                     self.dict = result as! [String : AnyObject]
                     print("--> ", result!)
                     print(self.dict)
+                }
+                else {
+                    print("\nThe error found is : -> ", error) // TESTING
                 }
             })
         }
