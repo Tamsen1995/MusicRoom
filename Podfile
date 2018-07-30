@@ -18,6 +18,10 @@ target 'MusicRoom' do
  pod 'FirebaseUI/Twitter'
  pod 'FirebaseUI/Phone'
  pod 'Firebase/Auth'
+ pod 'FBSDKLoginKit'
+ pod 'FacebookCore'
+ pod 'FacebookLogin'
+ pod 'FacebookShare'
  pod 'GoogleSignIn'
 
 end
