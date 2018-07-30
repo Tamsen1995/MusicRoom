@@ -14,25 +14,18 @@ import FacebookLogin
 
 class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
     
-
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-//    @IBOutlet weak var userIdLabel: UILabel!
-//    @IBOutlet weak var userNameLabel: UILabel!
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("\nInside of loginButton\n") // TESTING
-        if let result = result {
-            print("\nResult is", result) // TESTING
-//            self.userIdLabel.text = result.token.userID
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("\nInside of loginButtonDidLogOut\n") // TESTING
-    }
-    
-    
     var dict : [String : AnyObject]!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,65 +34,34 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         FBSDKProfile.enableUpdates(onAccessTokenChange: true)
         
-
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.FBSDKProfileDidChange, object: nil, queue: nil) { (Notification) in
-            if let profile = FBSDKProfile.current(), let firstName = profile.firstName, let lastName = profile.lastName {
-                print("\(firstName)") // TESTING
-//                self.userNameLabel.text = "\(firstName)"
-            } else {
-                print("Unknown") // TESTING
-//                self.userNameLabel.text = "Unknown"
-            }
-        }
-        
-//
-//        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-//        loginButton.center = view.center
-//        view.addSubview(loginButton)
-//
-        
-        //if the user is already logged in
-        if let accessToken = FBSDKAccessToken.current() {
-            getFBUserData()
-        }
         // checks if the user is logged in
         // presents home screen if so
         verifyUserAuthState()
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
-
     
-    //function is fetching the user data
-    func getFBUserData() {
-        print("\nInside of getFBUserData\n") // TESTING
-        if ((FBSDKAccessToken.current()) != nil) {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil) {
-                    self.dict = result as! [String : AnyObject]
-                    print("--> ", result!)
-                    print(self.dict)
-                }
-                else {
-                    print("\nThe error found is : -> ", error) // TESTING
-                }
-            })
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print("\nInside of loginButton\n") // TESTING
+        if let result = result {
+            print("\nResult is", result) // TESTING
+            //            self.userIdLabel.text = result.token.userID
         }
     }
     
-    
-    
-    ////////////
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("\nInside of loginButtonDidLogOut\n") // TESTING
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // The listener is needed because the profile won’t be completely populated at the moment the login completes. So effectively this code will wait around for the API to complete the profile, then will be called.
+    func addListenerToFBProfile () {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.FBSDKProfileDidChange, object: nil, queue: nil) { (Notification) in
+            if let profile = FBSDKProfile.current(), let firstName = profile.firstName, let lastName = profile.lastName {
+                print("\(firstName)")
+            } else {
+                print("Unknown")
+            }
+        }
     }
     
     @IBAction func signIn(_ sender: GIDSignInButton) {
@@ -111,6 +73,12 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
 extension LogRegController {
     
     func verifyUserAuthState () {
+        
+        if let accessToken = FBSDKAccessToken.current() {
+            print("\n\n\nHello?!!?\n\n\n") // TESSTING
+            getFBUserData()
+        }
+        
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 print("\nUser is logged in!!\n")
@@ -122,9 +90,28 @@ extension LogRegController {
     }
     
     func switchStoryboard() {
+        print("\nInside of switchStoryboard\n") // TESTING
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "HomeScreen") as UIViewController
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    //function is fetching the user data
+    func getFBUserData() {
+        print("\nInside of getFBUserData\n") // TESTING
+        if ((FBSDKAccessToken.current()) != nil) {
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil) {
+                    self.dict = result as! [String : AnyObject]
+                    print("--> ", result!)
+                    self.switchStoryboard()
+                    print(self.dict)
+                }
+                else {
+                    print("\nThe error found is : -> ", error) // TESTING
+                }
+            })
+        }
     }
 }
 

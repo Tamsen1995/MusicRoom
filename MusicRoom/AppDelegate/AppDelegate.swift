@@ -18,6 +18,7 @@ import FacebookLogin
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
     
+    // will make calls to the Facebook and google API API when initially launched (didFinishLaunchingWithOptions method)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
@@ -27,12 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return true
     }
     
-    // Sets the 
+    // When launched after the Facebook / Google login is completed (open url method)
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
         -> Bool {
             let sourceApplication: String? = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
-            
-            if FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: nil){
+            if FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: nil) {
                 print("\nAdding call parameters to Facebook API\n") // TESTING
                 return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: nil)
             }
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
-    ///////////////////////////////////////
+    /////////////////////////////////////// delegate methods to set up various authentication services
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
