@@ -36,7 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("\nAdding call parameters to Facebook API\n") // TESTING
                 return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: nil)
             }
-            return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            
+            if GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:]) {
+                print("\nAdding call parameters to Google API\n") // TESTING
+                return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            }
+            return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

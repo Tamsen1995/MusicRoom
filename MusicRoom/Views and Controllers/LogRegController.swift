@@ -42,6 +42,23 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
     
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let token = result?.token?.tokenString {
+                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                
+                Auth.auth().currentUser!.link(with: credential) { (user, error) in
+                    if user != nil && error == nil {
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            print("\n\n\ncredentials are : ", credential) // TESTING
+                        }
+                        // Success
+                    } else {
+                        print("linkWithCredential error: ", error)
+                    }
+                }
+            }
+        }
+        
         print("\nInside of loginButton\n") // TESTING
         if let result = result {
             print("\nResult is", result) // TESTING
@@ -65,6 +82,7 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
     }
     
     @IBAction func signIn(_ sender: GIDSignInButton) {
+        print("\nInside of signIn\n") // TESTING
         GIDSignIn.sharedInstance().signIn()
     }
 }
