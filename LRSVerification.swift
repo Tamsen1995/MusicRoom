@@ -19,10 +19,10 @@ extension LogRegController {
         if FBSDKAccessToken.current() != nil {
             getFBUserData()
         }
-        
+           
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
-                
+
                 print("\nUser is logged in!!\n---> ", user!.email)
                 self.switchToHomeScreen()
             } else {

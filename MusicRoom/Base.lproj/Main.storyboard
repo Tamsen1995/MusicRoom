@@ -104,20 +104,29 @@
                                     <action selector="registerPressed:" destination="cIr-Ss-Hbw" eventType="touchUpInside" id="EXj-6O-cmJ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUQ-WU-DmQ">
+                                <rect key="frame" x="112" y="174" width="150" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JUQ-WU-DmQ" firstAttribute="leading" secondItem="wKK-wv-b2J" secondAttribute="leading" constant="112" id="CQg-pv-ulx"/>
                             <constraint firstItem="wKK-wv-b2J" firstAttribute="trailing" secondItem="sd7-FY-CrM" secondAttribute="trailing" constant="113" id="EgD-kj-PSk"/>
                             <constraint firstItem="6Jm-Jr-dZq" firstAttribute="leading" secondItem="wKK-wv-b2J" secondAttribute="leading" id="Mx4-MG-R7f"/>
                             <constraint firstItem="lTJ-Zu-8aU" firstAttribute="top" secondItem="wKK-wv-b2J" secondAttribute="top" constant="78" id="NLH-x5-fy1"/>
                             <constraint firstItem="wKK-wv-b2J" firstAttribute="bottom" secondItem="6Jm-Jr-dZq" secondAttribute="bottom" constant="385" id="Ndq-3N-ri4"/>
                             <constraint firstItem="sd7-FY-CrM" firstAttribute="top" secondItem="lTJ-Zu-8aU" secondAttribute="bottom" constant="8" id="SQ0-O8-Lja"/>
+                            <constraint firstItem="JUQ-WU-DmQ" firstAttribute="top" secondItem="sd7-FY-CrM" secondAttribute="bottom" constant="8" id="U4l-Y6-zch"/>
                             <constraint firstItem="6Jm-Jr-dZq" firstAttribute="top" secondItem="sd7-FY-CrM" secondAttribute="bottom" constant="86" id="Uzh-Ou-8f8"/>
                             <constraint firstItem="6Jm-Jr-dZq" firstAttribute="trailing" secondItem="wKK-wv-b2J" secondAttribute="trailing" id="VxE-hS-Q7p"/>
                             <constraint firstItem="iNn-00-hjE" firstAttribute="leading" secondItem="wKK-wv-b2J" secondAttribute="leading" constant="153" id="XWj-p2-zzG"/>
                             <constraint firstItem="iNn-00-hjE" firstAttribute="top" secondItem="wKK-wv-b2J" secondAttribute="top" constant="24" id="Yy7-vl-eNt"/>
                             <constraint firstItem="wKK-wv-b2J" firstAttribute="trailing" secondItem="lTJ-Zu-8aU" secondAttribute="trailing" constant="113" id="aa0-i0-QBf"/>
                             <constraint firstItem="lTJ-Zu-8aU" firstAttribute="top" secondItem="iNn-00-hjE" secondAttribute="bottom" constant="33" id="dDy-Ek-b5e"/>
+                            <constraint firstItem="wKK-wv-b2J" firstAttribute="trailing" secondItem="JUQ-WU-DmQ" secondAttribute="trailing" constant="113" id="fPn-EE-3lV"/>
                             <constraint firstItem="sd7-FY-CrM" firstAttribute="top" secondItem="lTJ-Zu-8aU" secondAttribute="bottom" constant="8" id="iUA-Zy-4lb"/>
                             <constraint firstItem="wKK-wv-b2J" firstAttribute="trailing" secondItem="iNn-00-hjE" secondAttribute="trailing" constant="153" id="jut-YO-pwl"/>
                             <constraint firstItem="lTJ-Zu-8aU" firstAttribute="leading" secondItem="wKK-wv-b2J" secondAttribute="leading" constant="112" id="oVg-N8-cI9"/>
@@ -128,6 +137,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="lTJ-Zu-8aU" id="GXx-Ce-pwq"/>
                         <outlet property="passwordTextField" destination="sd7-FY-CrM" id="Ydk-p9-DZa"/>
+                        <outlet property="passwordVerify" destination="JUQ-WU-DmQ" id="TbY-f9-MU2"/>
                         <segue destination="etb-2Q-st8" kind="show" identifier="registeredSegue" id="rUv-LI-ePt"/>
                     </connections>
                 </viewController>
@@ -230,6 +240,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kxO-vN-3Uy"/>
+        <segue reference="rUv-LI-ePt"/>
     </inferredMetricsTieBreakers>
 </document>
