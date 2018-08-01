@@ -42,6 +42,15 @@ class RegisterViewController: UIViewController {
         return string!
     }
     
+    func setActionCodeSettings() -> ActionCodeSettings {
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "musicroom-1250a.firebaseapp.com")
+        // The sign-in operation has to always be completed in the app
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+        return actionCodeSettings
+    }
+    
     @IBAction func registerPressed(_ sender: Any) {
         
         var user = userData("", "")
@@ -71,33 +80,29 @@ class RegisterViewController: UIViewController {
 
         
 
-        let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "localhost")
-        // The sign-in operation has to always be completed in the app
-        actionCodeSettings.handleCodeInApp = false
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        actionCodeSettings.setAndroidPackageName("com.example.androids", installIfNotAvailable: false, minimumVersion: "12")
-        
+        let actionCodeSettings = setActionCodeSettings()
+            
+       
 
 
-        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { (error) in
-            if let error = error {
-                print("\n\n\nThere was an error while sending the link in registerPressed", error) // TESTING
-                return
-            }
-            // No error means the link was successfully sent
-            UserDefaults.standard.set(email, forKey: "Email")
-            print("\nCheck your email for a link pleaase\n") // TESTING
-        }
-        
-        
+//        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { (error) in
+//            if let error = error {
+//                print("\n\n\nThere was an error while sending the link in registerPressed", error) // TESTING
+//                return
+//            }
+//            // No error means the link was successfully sent
+//            UserDefaults.standard.set(email, forKey: "Email")
+//            print("\nCheck your email for a link pleaase\n") // TESTING
+//        }
+
+
         if let user = Auth.auth().currentUser {
             print("\nUser is ", user) // TESTING
         }
+
         
-        
-    //    FirebaseManage.shared.createUserInDB(user)
-        //self.performSegue(withIdentifier: "registeredSegue", sender: self)
+        FirebaseManage.shared.createUserInAuth(user)
+        self.performSegue(withIdentifier: "registeredSegue", sender: self)
     }
     
 

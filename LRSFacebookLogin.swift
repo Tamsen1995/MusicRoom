@@ -55,7 +55,9 @@ extension LogRegController{
                 print(error)
                 return
             }
-            print("\n\nauthResult inside of getFBUserData: ", authResult) // TESTING
+            let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
+            FirebaseManage.shared.createUserNodeInDb(userNode)
+            // print("\n\nauthResult inside of authenticateOnFirebase: ", authResult!.user.email) // TESTING
         }
     }
     
