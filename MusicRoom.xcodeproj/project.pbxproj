@@ -24,6 +24,7 @@
 		67B180BF20E5303800DB55E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67B180BE20E5303800DB55E2 /* GoogleService-Info.plist */; };
 		67E71B952111DAA100080AE5 /* UserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B942111DAA100080AE5 /* UserNode.swift */; };
 		67E71B972112080000080AE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B962112080000080AE5 /* User.swift */; };
+		67E71B9921122B4100080AE5 /* FindUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B9821122B4100080AE5 /* FindUsersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		67B180BE20E5303800DB55E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67E71B942111DAA100080AE5 /* UserNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNode.swift; sourceTree = "<group>"; };
 		67E71B962112080000080AE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		67E71B9821122B4100080AE5 /* FindUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUsersViewController.swift; sourceTree = "<group>"; };
 		C0B13D70C78B00E2E34AFF7F /* Pods-MusicRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicRoom/Pods-MusicRoom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 				67092236210F517B00FDBE67 /* LoginRegisterStartController */,
 				67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */,
 				6709223D210F625A00FDBE67 /* ProfileUserScreenController.swift */,
+				67E71B9821122B4100080AE5 /* FindUsersViewController.swift */,
 			);
 			path = "Views and Controllers";
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */,
 				67AAD57F210B30BA00328A4D /* GoogleAuth.swift in Sources */,
 				67092238210F51C600FDBE67 /* LRSVerification.swift in Sources */,
+				67E71B9921122B4100080AE5 /* FindUsersViewController.swift in Sources */,
 				6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */,
 				6709223E210F625A00FDBE67 /* ProfileUserScreenController.swift in Sources */,
 				67092241210F699400FDBE67 /* HandleViews.swift in Sources */,

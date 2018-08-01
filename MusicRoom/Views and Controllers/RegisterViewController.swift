@@ -67,7 +67,6 @@ class RegisterViewController: UIViewController {
         }
         
         
-        
         if (passwordVerify(password, password2) == true) {
             user = signUpInfo(email, password)
         } else {
