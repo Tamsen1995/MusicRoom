@@ -35,7 +35,6 @@ extension LogRegController{
         print("\nInside of logout button in startscreen (Error)\n")
     }
     
-    
     // The listener is needed because the profile won’t be completely populated at the moment the login completes. So effectively this code will wait around for the API to complete the profile, then will be called.
     func addListenerToFBProfile () {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.FBSDKProfileDidChange, object: nil, queue: nil) { (Notification) in
@@ -46,7 +45,7 @@ extension LogRegController{
             }
         }
     }
-    
+
     // gets the credential from fb and authenticaes with Firebase
     func authenticateOnFirebase() {
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
