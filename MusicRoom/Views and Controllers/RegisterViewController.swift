@@ -53,7 +53,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerPressed(_ sender: Any) {
         
-        var user = userData("", "")
+        var user = signUpInfo("", "")
         
         
         ////////////////////////////////////////////////////////////////////////////////////////////////// verification of inputs
@@ -67,9 +67,8 @@ class RegisterViewController: UIViewController {
         }
         
         
-        
         if (passwordVerify(password, password2) == true) {
-            user = userData(email, password)
+            user = signUpInfo(email, password)
         } else {
             // TODO : Make it so a prompt says if the passwords are equal or not
             print("\nYour first passwords do not match\n") // TESTING

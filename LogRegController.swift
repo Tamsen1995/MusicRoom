@@ -28,6 +28,8 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FirebaseManage.shared.lookForEmailInDb("yesitstam@gmail.com") // TESTING
+        
         // Facebook
         loginButton.delegate = self
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]

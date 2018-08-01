@@ -59,7 +59,7 @@ extension LogRegController{
             // print("\n\nauthResult inside of authenticateOnFirebase: ", authResult!.user.email) // TESTING
         }
     }
-    
+
     //function is fetching the user data
     func getFBUserData() {
         print("\nInside of getFBUserData\n") // TESTING
