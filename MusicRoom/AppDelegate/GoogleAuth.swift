@@ -27,7 +27,8 @@ extension AppDelegate {
                 print(error)
                 return
             }
-            print("The user : ", user, " has signed in.")
+            let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
+            FirebaseManage.shared.createUserNodeInDb(userNode)
         }
         
     }

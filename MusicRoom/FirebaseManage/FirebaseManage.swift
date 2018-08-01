@@ -34,7 +34,6 @@ class FirebaseManage {
         let userRef = rootRef.child("users").child(userNode.userId)
         let subNode = userRef.child(userNode.subNode)
         subNode.setValue(userNode.subNodeValue)
-
         // set subnode
         // set subnode value
     }
