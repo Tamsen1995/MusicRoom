@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct userData {
+struct signUpInfo {
     var userName : String
     var password : String
     init (_ name: String, _ pass: String) {
