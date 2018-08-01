@@ -12,9 +12,12 @@ import FirebaseUI
 
 class FirebaseManage {
     static let shared = FirebaseManage()
+    var database : Database
+    private let rootRef: DatabaseReference
+    let storageRef: StorageReference
 
     
-    func createUserInDB (_ user: userData) {
+    func createUserInAuth (_ user: userData) {
         Auth.auth().createUser(withEmail: user.userName, password: user.password) {
             (user, error) in
             if error != nil {
@@ -25,7 +28,22 @@ class FirebaseManage {
         }
     }
     
+    // takes in the user id and then
+    // creates a node for it inside of the databe
+    func createUserNodeInDb(_ userNode: UserNode) {
+        let userRef = rootRef.child("users").child(userNode.userId)
+        let subNode = userRef.child(userNode.subNode)
+        subNode.setValue(userNode.subNodeValue)
+        // set subnode
+        // set subnode value
+    }
+    
     private init () {
+        database = Database.database()
+        database.isPersistenceEnabled = true
+        rootRef = Database.database().reference()
+        rootRef.keepSynced(true)
+        storageRef =  Storage.storage().reference()
         print("\n\nInitializing Firebase\n\n") // TESTING
     }
     

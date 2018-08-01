@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		59425DA9820B701B79E9F34E /* Pods_MusicRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4BE7199ED40B0DB1DFFF3C /* Pods_MusicRoom.framework */; };
+		67092238210F51C600FDBE67 /* LRSVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67092237210F51C600FDBE67 /* LRSVerification.swift */; };
+		6709223A210F5BC900FDBE67 /* LRSFacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67092239210F5BC900FDBE67 /* LRSFacebookLogin.swift */; };
+		6709223E210F625A00FDBE67 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6709223D210F625A00FDBE67 /* HomeScreenViewController.swift */; };
+		67092241210F699400FDBE67 /* HandleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67092240210F699400FDBE67 /* HandleViews.swift */; };
 		6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736E483210A1A8F0022F94E /* FirebaseManage.swift */; };
 		67816FE8210A2261008062BB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67816FE7210A2261008062BB /* UserData.swift */; };
 		67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */; };
@@ -18,11 +22,16 @@
 		67B180B420E52E7400DB55E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67B180B320E52E7400DB55E2 /* Assets.xcassets */; };
 		67B180B720E52E7400DB55E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67B180B520E52E7400DB55E2 /* LaunchScreen.storyboard */; };
 		67B180BF20E5303800DB55E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67B180BE20E5303800DB55E2 /* GoogleService-Info.plist */; };
+		67E71B952111DAA100080AE5 /* UserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B942111DAA100080AE5 /* UserNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08428B5BFDB0717AF97C7111 /* Pods-MusicRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicRoom/Pods-MusicRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		4F4BE7199ED40B0DB1DFFF3C /* Pods_MusicRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67092237210F51C600FDBE67 /* LRSVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSVerification.swift; sourceTree = "<group>"; };
+		67092239210F5BC900FDBE67 /* LRSFacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSFacebookLogin.swift; sourceTree = "<group>"; };
+		6709223D210F625A00FDBE67 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		67092240210F699400FDBE67 /* HandleViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleViews.swift; sourceTree = "<group>"; };
 		6736E483210A1A8F0022F94E /* FirebaseManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManage.swift; sourceTree = "<group>"; };
 		67816FE7210A2261008062BB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +44,7 @@
 		67B180B620E52E7400DB55E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67B180B820E52E7400DB55E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67B180BE20E5303800DB55E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67E71B942111DAA100080AE5 /* UserNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNode.swift; sourceTree = "<group>"; };
 		C0B13D70C78B00E2E34AFF7F /* Pods-MusicRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicRoom/Pods-MusicRoom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,10 +60,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67092236210F517B00FDBE67 /* LoginRegisterStartController */ = {
+			isa = PBXGroup;
+			children = (
+				67B180AE20E52E7400DB55E2 /* LogRegController.swift */,
+				67092239210F5BC900FDBE67 /* LRSFacebookLogin.swift */,
+				67092237210F51C600FDBE67 /* LRSVerification.swift */,
+			);
+			name = LoginRegisterStartController;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		6709223F210F697C00FDBE67 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				67092240210F699400FDBE67 /* HandleViews.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6736E482210A1A610022F94E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				67816FE7210A2261008062BB /* UserData.swift */,
+				67E71B942111DAA100080AE5 /* UserNode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -78,8 +108,10 @@
 		67AAD580210B401300328A4D /* Views and Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				67B180AE20E52E7400DB55E2 /* LogRegController.swift */,
+				6709223F210F697C00FDBE67 /* Helpers */,
+				67092236210F517B00FDBE67 /* LoginRegisterStartController */,
 				67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */,
+				6709223D210F625A00FDBE67 /* HomeScreenViewController.swift */,
 			);
 			path = "Views and Controllers";
 			sourceTree = "<group>";
@@ -323,7 +355,12 @@
 				67816FE8210A2261008062BB /* UserData.swift in Sources */,
 				67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */,
 				67AAD57F210B30BA00328A4D /* GoogleAuth.swift in Sources */,
+				67092238210F51C600FDBE67 /* LRSVerification.swift in Sources */,
 				6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */,
+				6709223E210F625A00FDBE67 /* HomeScreenViewController.swift in Sources */,
+				67092241210F699400FDBE67 /* HandleViews.swift in Sources */,
+				6709223A210F5BC900FDBE67 /* LRSFacebookLogin.swift in Sources */,
+				67E71B952111DAA100080AE5 /* UserNode.swift in Sources */,
 				67B180AF20E52E7400DB55E2 /* LogRegController.swift in Sources */,
 				67B180AD20E52E7400DB55E2 /* AppDelegate.swift in Sources */,
 			);

@@ -27,13 +27,15 @@ extension AppDelegate {
                 print(error)
                 return
             }
-            print("The user : ", user, " has signed in.")
+            let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
+            FirebaseManage.shared.createUserNodeInDb(userNode)
         }
         
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print(signIn)
+        print("\nInside of signout\n")
         // Perform any operations when the user disconnects from app here.
         // ...
     }
