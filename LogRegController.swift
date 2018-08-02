@@ -14,6 +14,9 @@ import FacebookLogin
 
 class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
     
+    var uid : String = ""
+    var email : String = ""
+    
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var dict : [String : AnyObject]!
     
@@ -22,13 +25,13 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
         
         // Everytime the view appears
         // we check if the user is logged in or not
+        print("\n\nInside of the viewWillAppear of the logregcontroller\n\n") // TESTING
         verifyUserAuthState()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseManage.shared.lookForEmailInDb("yesitstam@gmail.com") // TESTING
         
         // Facebook
         loginButton.delegate = self

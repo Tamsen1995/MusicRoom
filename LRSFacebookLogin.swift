@@ -13,7 +13,9 @@ import GoogleSignIn
 import FBSDKLoginKit
 import FacebookLogin
 
-extension LogRegController{
+extension LogRegController {
+    
+
     
     // Facebook
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -46,6 +48,9 @@ extension LogRegController{
         }
     }
 
+    
+    
+    
     // gets the credential from fb and authenticaes with Firebase
     func authenticateOnFirebase() {
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -54,11 +59,38 @@ extension LogRegController{
                 print(error)
                 return
             }
-            let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
-            FirebaseManage.shared.createUserNodeInDb(userNode)
+            
+            // check if user is registered
+            FirebaseManage.shared.isUserRegistered(authResult!.user.email!, completion: { (bool) in
+                if bool == false {
+                    self.uid = authResult!.user.uid
+                    self.email = authResult!.user.email!
+                    
+                    //let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
+                    print("\n\nUser is not registered\n\n") // TESTING
+                    //Switch to screen which will prompt for a username
+                    self.performSegue(withIdentifier: "promptForUserName", sender: self)
+                    
+//                    FirebaseManage.shared.createUserNodeInDb(userNode)
+                } else {
+                    self.switchToHomeScreen()
+                }
+            })
+            // TODO : Have the username be fired onto the firebase
             // print("\n\nauthResult inside of authenticateOnFirebase: ", authResult!.user.email) // TESTING
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is UsernamePromptViewController
+        {
+            let vc = segue.destination as? UsernamePromptViewController
+            vc?.uid = self.uid
+            vc?.email = self.email
+        }
+    }
+
 
     //function is fetching the user data
     func getFBUserData() {
@@ -66,9 +98,21 @@ extension LogRegController{
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
             if (error == nil) {
                 self.dict = result as! [String : AnyObject]
-                print("\n\n", self.dict) // TESTING
-                self.switchToHomeScreen()
+                print("\n\n---->", self.dict["email"]) // TESTING
+                
+                guard let email = self.dict["email"] as? String else {
+                    return
+                }
+                
+                FirebaseManage.shared.isUserRegistered(email, completion: { (bool) in
+                    if bool == true { self.switchToHomeScreen() } else {
+                        print("\n\nIn verifyUserAuthState user is not registered\n") // TESTING
+                    }
 
+                })
+
+                
+              //  self.switchToHomeScreen()
             }
             else {
                 print("\nThe error found is : -> ", error) // TESTING
