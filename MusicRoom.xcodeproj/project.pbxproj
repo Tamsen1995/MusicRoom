@@ -95,6 +95,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		674550D5211383D900C0D1FD /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				674550D32113411500C0D1FD /* UsernamePromptViewController.swift */,
+				6709223D210F625A00FDBE67 /* ProfileUserScreenController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		67816FE9210A2293008062BB /* FirebaseManage */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +127,7 @@
 				6709223F210F697C00FDBE67 /* Helpers */,
 				67092236210F517B00FDBE67 /* LoginRegisterStartController */,
 				67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */,
-				674550D32113411500C0D1FD /* UsernamePromptViewController.swift */,
-				6709223D210F625A00FDBE67 /* ProfileUserScreenController.swift */,
+				674550D5211383D900C0D1FD /* Registration */,
 				67E71B9821122B4100080AE5 /* FindUsersViewController.swift */,
 			);
 			path = "Views and Controllers";

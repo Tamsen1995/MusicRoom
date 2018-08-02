@@ -61,7 +61,21 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         FirebaseManage.shared.lookForEmailInDb(searchText.lowercased()) { (snapshot) in
             print("\nSnapshot inside of textdidchange\n\n", snapshot)
 
+            guard let email = snapshot as? NSDictionary else {
+                return
+            }
             
+            
+            print("\n\n-->|||", email)
+            
+//            self.users = snapshot.children.compactMap({child -> User? in
+//                guard let child = child as? DataSnapshot else { return nil }
+//                guard let dictionnary = child.value as? NSDictionary else {return nil }
+//                print("dictionnary :  ", dictionnary["email"]) // TESTING
+//                //       dictionnary.setValue(child.key, forKey: "key")
+//                print("\n\n\n\nUser class is : \n", User(dictionnary)) // TESTING
+//                return User(dictionnary)
+//            })
             
             // snapshot is in here
         }

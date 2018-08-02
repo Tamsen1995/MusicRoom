@@ -27,9 +27,6 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
     func passwordVerify(_ password: String, _ password2: String) -> Bool {
         return password == password2
     }
