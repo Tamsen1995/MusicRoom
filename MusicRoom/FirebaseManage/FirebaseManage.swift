@@ -29,11 +29,11 @@ class FirebaseManage {
 
         self.lookForEmailInDb(email) { (snapshot) in
             if snapshot.exists() {
-                completion(true)
                 print("User is registered") // TESTING
+                completion(true)
             } else {
-                completion(false)
                 print("User is not registered yet") // TESTING
+                completion(false)
             }
         }
     }
