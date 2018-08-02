@@ -20,17 +20,53 @@ class FirebaseManage {
     private let rootRef: DatabaseReference
     let storageRef: StorageReference
     private var path = NSLocalizedString("Users", comment: "Path Firebase")
-
+    private var users = [User]()
+    
    
+    func isUserRegistered(_ email: String, completion: @escaping (_ exists: Bool) -> ()) {
+//        let userRef = rootRef.child("users").child(email)
+
+
+        self.lookForEmailInDb(email) { (snapshot) in
+            if snapshot.exists() {
+                completion(true)
+                print("User is registered") // TESTING
+            } else {
+                completion(false)
+                print("User is not registered yet") // TESTING
+            }
+        }
+    }
+    
     // looks for a specific email within the database
-    func lookForEmailInDb(_ email: String) {
+    func lookForEmailInDb(_ email: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
         let userRef = rootRef.child("users")
         let query = userRef.queryOrdered(byChild: "email").queryEqual(toValue: email)
         query.observe(.value) { (snapshot) in
-            print("\n\n\nsnapshot : ", snapshot) // TESTING
+            
+
+            
+            self.users = snapshot.children.compactMap({child -> User? in
+                guard let child = child as? DataSnapshot else { return nil }
+                guard let dictionnary = child.value as? NSDictionary else {return nil }
+                print("dictionnary :  ", dictionnary["email"]) // TESTING
+
+         //       dictionnary.setValue(child.key, forKey: "key")
+                
+                print("\n\n\n\nUser class is : \n", User(dictionnary)) // TESTING
+                return User(dictionnary)
+                
+            })
+            
+            completion(snapshot) // TESTING
         }
     }
 
+    
+//    func hardProcessingWithString(input: String, completion: (result: String) -> Void) {
+//        ...
+//            completion("we finished!")
+//    }
     
     func createUserInAuth (_ user: signUpInfo) {
         Auth.auth().createUser(withEmail: user.userName, password: user.password) {

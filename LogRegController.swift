@@ -14,6 +14,9 @@ import FacebookLogin
 
 class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
     
+    var uid : String = ""
+    var email : String = ""
+    
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var dict : [String : AnyObject]!
     
@@ -28,7 +31,6 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseManage.shared.lookForEmailInDb("yesitstam@gmail.com") // TESTING
         
         // Facebook
         loginButton.delegate = self

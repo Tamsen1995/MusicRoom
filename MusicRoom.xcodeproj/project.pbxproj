@@ -13,6 +13,7 @@
 		6709223E210F625A00FDBE67 /* ProfileUserScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6709223D210F625A00FDBE67 /* ProfileUserScreenController.swift */; };
 		67092241210F699400FDBE67 /* HandleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67092240210F699400FDBE67 /* HandleViews.swift */; };
 		6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736E483210A1A8F0022F94E /* FirebaseManage.swift */; };
+		674550D42113411500C0D1FD /* UsernamePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674550D32113411500C0D1FD /* UsernamePromptViewController.swift */; };
 		67816FE8210A2261008062BB /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67816FE7210A2261008062BB /* SignUpInfo.swift */; };
 		67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */; };
 		67AAD57F210B30BA00328A4D /* GoogleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAD57E210B30BA00328A4D /* GoogleAuth.swift */; };
@@ -35,6 +36,7 @@
 		6709223D210F625A00FDBE67 /* ProfileUserScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserScreenController.swift; sourceTree = "<group>"; };
 		67092240210F699400FDBE67 /* HandleViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleViews.swift; sourceTree = "<group>"; };
 		6736E483210A1A8F0022F94E /* FirebaseManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManage.swift; sourceTree = "<group>"; };
+		674550D32113411500C0D1FD /* UsernamePromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernamePromptViewController.swift; sourceTree = "<group>"; };
 		67816FE7210A2261008062BB /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		67AAD57E210B30BA00328A4D /* GoogleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuth.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				6709223F210F697C00FDBE67 /* Helpers */,
 				67092236210F517B00FDBE67 /* LoginRegisterStartController */,
 				67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */,
+				674550D32113411500C0D1FD /* UsernamePromptViewController.swift */,
 				6709223D210F625A00FDBE67 /* ProfileUserScreenController.swift */,
 				67E71B9821122B4100080AE5 /* FindUsersViewController.swift */,
 			);
@@ -366,6 +369,7 @@
 				6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */,
 				6709223E210F625A00FDBE67 /* ProfileUserScreenController.swift in Sources */,
 				67092241210F699400FDBE67 /* HandleViews.swift in Sources */,
+				674550D42113411500C0D1FD /* UsernamePromptViewController.swift in Sources */,
 				6709223A210F5BC900FDBE67 /* LRSFacebookLogin.swift in Sources */,
 				67E71B972112080000080AE5 /* User.swift in Sources */,
 				67E71B952111DAA100080AE5 /* UserNode.swift in Sources */,

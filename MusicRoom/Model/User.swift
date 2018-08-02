@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+class User {
     var userId : String
     var userName : String
     var email : String
@@ -16,6 +16,18 @@ struct User {
     
     enum Keys: String {
         case userId, userName, email, name
+    }
+    
+    convenience init?(_ dictionnary: NSDictionary) {
+        guard let userId = dictionnary[Keys.userId.rawValue] as? String else { return nil }
+        guard let userName = dictionnary[Keys.userName.rawValue] as? String else { return nil }
+        guard let email = dictionnary[Keys.userName.rawValue] as? String else { return nil }
+        guard let name = dictionnary[Keys.name.rawValue] as? String else { return nil }
+        
+//        print("\nTesting: ", email) // TESTING
+        
+        
+        self.init(userId, userName, email, name)
     }
     
     

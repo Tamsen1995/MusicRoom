@@ -19,11 +19,9 @@ extension LogRegController {
         if FBSDKAccessToken.current() != nil {
             getFBUserData()
         }
-           
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
-
-                print("\nUser is logged in!!\n---> ", user!.email)
+                print("\nUser in verifyUserAuthState : ", user)
                 self.switchToHomeScreen()
             } else {
                 print("\nUser is not logged in!\n")
