@@ -25,6 +25,7 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
         
         // Everytime the view appears
         // we check if the user is logged in or not
+        print("\n\nInside of the viewWillAppear of the logregcontroller\n\n") // TESTING
         verifyUserAuthState()
     }
     

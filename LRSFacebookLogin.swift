@@ -98,7 +98,20 @@ extension LogRegController {
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
             if (error == nil) {
                 self.dict = result as! [String : AnyObject]
-                print("\n\n", self.dict) // TESTING
+                print("\n\n---->", self.dict["email"]) // TESTING
+                
+                guard let email = self.dict["email"] as? String else {
+                    return
+                }
+                
+                FirebaseManage.shared.isUserRegistered(email, completion: { (bool) in
+                    if bool == true { self.switchToHomeScreen() } else {
+                        print("\n\nIn verifyUserAuthState user is not registered\n") // TESTING
+                    }
+
+                })
+
+                
               //  self.switchToHomeScreen()
             }
             else {

@@ -17,7 +17,6 @@ class UsernamePromptViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("\n\n\n--->", uid, email) // TESTING
         
         // Do any additional setup after loading the view.
     }
