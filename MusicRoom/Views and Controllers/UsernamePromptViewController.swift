@@ -35,6 +35,8 @@ class UsernamePromptViewController: UIViewController {
         userNode = UserNode(self.uid, "email", self.email)
         FirebaseManage.shared.createUserNodeInDb(userNode)
         print("\nUsername chosen\n") // TESTING
+        self.dismiss(animated: false, completion: nil)
+
     }
 
 }

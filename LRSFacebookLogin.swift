@@ -100,7 +100,6 @@ extension LogRegController {
                 self.dict = result as! [String : AnyObject]
                 print("\n\n", self.dict) // TESTING
               //  self.switchToHomeScreen()
-
             }
             else {
                 print("\nThe error found is : -> ", error) // TESTING

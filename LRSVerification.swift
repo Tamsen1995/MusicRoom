@@ -21,8 +21,14 @@ extension LogRegController {
         }
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
-                print("\nUser in verifyUserAuthState : ", user)
-                self.switchToHomeScreen()
+                print("\nUser in verifyUserAuthState : ", (user?.email!)!)
+                FirebaseManage.shared.isUserRegistered((user?.email!)!, completion: { (bool) in
+                    if bool == true { self.switchToHomeScreen() } else {
+                        print("\n\nIn verifyUserAuthState user is not registered\n") // TESTING
+                    }
+                    
+                })
+                
             } else {
                 print("\nUser is not logged in!\n")
             }
