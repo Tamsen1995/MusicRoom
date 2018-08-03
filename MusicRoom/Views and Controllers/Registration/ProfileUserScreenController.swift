@@ -28,10 +28,7 @@ class ProfileUserScreenController: UIViewController {
     
  
     @IBAction func logOut(_ sender: Any) {
-        print("\nInside of logout\n")
-        
-
-        
+        print("\nInside of logout\n") // TESTING
         let firebaseAuth = Auth.auth()
         do {
             let manager = FBSDKLoginManager()

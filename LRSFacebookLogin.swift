@@ -15,8 +15,6 @@ import FacebookLogin
 
 extension LogRegController {
     
-
-    
     // Facebook
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if let result = result {
@@ -47,10 +45,8 @@ extension LogRegController {
             }
         }
     }
+    
 
-    
-    
-    
     // gets the credential from fb and authenticaes with Firebase
     func authenticateOnFirebase() {
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -59,28 +55,27 @@ extension LogRegController {
                 print(error)
                 return
             }
-            
-            // check if user is registered
-            FirebaseManage.shared.isUserRegistered(authResult!.user.email!, completion: { (bool) in
-                if bool == false {
-                    self.uid = authResult!.user.uid
-                    self.email = authResult!.user.email!
-                    
-                    //let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
-                    print("\n\nUser is not registered\n\n") // TESTING
-                    //Switch to screen which will prompt for a username
-                    self.performSegue(withIdentifier: "promptForUserName", sender: self)
-                    
-//                    FirebaseManage.shared.createUserNodeInDb(userNode)
-                } else {
-                    self.switchToHomeScreen()
-                }
-            })
-            // TODO : Have the username be fired onto the firebase
-            // print("\n\nauthResult inside of authenticateOnFirebase: ", authResult!.user.email) // TESTING
+            self.promptForUserName(authResult: authResult)
         }
     }
     
+    func promptForUserName (authResult: AuthDataResult?) {
+        
+        // check if user is registered
+        FirebaseManage.shared.isUserRegistered(authResult!.user.email!, completion: { (bool) in
+            if bool == false {
+                self.uid = authResult!.user.uid
+                self.email = authResult!.user.email!
+                //let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
+                print("\n\nUser is not registered\n\n") // TESTING
+                //Switch to screen which will prompt for a username
+                self.performSegue(withIdentifier: "promptForUserName", sender: self)
+            } else {
+                self.switchToHomeScreen()
+            }
+        })
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is UsernamePromptViewController
@@ -91,34 +86,19 @@ extension LogRegController {
         }
     }
 
-
-    //function is fetching the user data
+    // gets the user data and checks if the user
+    // signing in is already registered.
+    // If so it switches to the homescreen.
     func getFBUserData() {
         print("\nInside of getFBUserData\n") // TESTING
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
             if (error == nil) {
                 self.dict = result as! [String : AnyObject]
-                print("\n\n---->", self.dict["email"]) // TESTING
-                
-                guard let email = self.dict["email"] as? String else {
-                    return
-                }
-                
-                FirebaseManage.shared.isUserRegistered(email, completion: { (bool) in
-                    if bool == true {
-                        print("\nInside of getFBUserData\n") // TESTING
-                        self.switchToHomeScreen()
-                        
-                    } else {
-                        print("\n\nIn verifyUserAuthState user is not registered\n") // TESTING
-                    }
-                })
-
-                
-              //  self.switchToHomeScreen()
+                guard let email = self.dict["email"] as? String else { return }
+                self.redirectToHomescreen(email: email)
             }
             else {
-                print("\nThe error found is : -> ", error) // TESTING
+                print("\nError inside of getFBUserData : ", error)
             }
         })
     }

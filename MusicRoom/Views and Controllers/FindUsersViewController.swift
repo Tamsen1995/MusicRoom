@@ -36,7 +36,6 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("\nBeginning to edit\n") // TESTING
         searchActive = true
@@ -60,7 +59,7 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         print("\nSearching\n") // TESTING
         FirebaseManage.shared.lookForEmailInDb(searchText.lowercased()) { (snapshot) in
             print("\nSnapshot inside of textdidchange\n\n", snapshot)
-
+            
             guard let email = snapshot as? NSDictionary else {
                 return
             }
@@ -68,14 +67,14 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
             
             print("\n\n-->|||", email)
             
-//            self.users = snapshot.children.compactMap({child -> User? in
-//                guard let child = child as? DataSnapshot else { return nil }
-//                guard let dictionnary = child.value as? NSDictionary else {return nil }
-//                print("dictionnary :  ", dictionnary["email"]) // TESTING
-//                //       dictionnary.setValue(child.key, forKey: "key")
-//                print("\n\n\n\nUser class is : \n", User(dictionnary)) // TESTING
-//                return User(dictionnary)
-//            })
+            //            self.users = snapshot.children.compactMap({child -> User? in
+            //                guard let child = child as? DataSnapshot else { return nil }
+            //                guard let dictionnary = child.value as? NSDictionary else {return nil }
+            //                print("dictionnary :  ", dictionnary["email"]) // TESTING
+            //                //       dictionnary.setValue(child.key, forKey: "key")
+            //                print("\n\n\n\nUser class is : \n", User(dictionnary)) // TESTING
+            //                return User(dictionnary)
+            //            })
             
             // snapshot is in here
         }
@@ -100,9 +99,9 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
         
     }
-
     
-
+    
+    
     //
     //    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //        if(searchActive) {
