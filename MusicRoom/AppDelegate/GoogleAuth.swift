@@ -39,6 +39,4 @@ extension AppDelegate {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
- 
-    
 }
