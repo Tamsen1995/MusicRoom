@@ -15,7 +15,7 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     var searchActive : Bool = false
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var filtered:[String] = []
+    var filteredSearch: [String] = []
     
     
     //    let searchController = UISearchController(searchResultsController: nil)
@@ -55,28 +55,18 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         searchActive = false
     }
     
+    
+    // The search is supposed to happen by email, so when searching it will query the db for emails
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("\nSearching\n") // TESTING
         FirebaseManage.shared.lookForEmailInDb(searchText.lowercased()) { (snapshot) in
-            print("\nSnapshot inside of textdidchange\n\n", snapshot)
-            
-            guard let email = snapshot as? NSDictionary else {
-                return
-            }
-            
-            
-            print("\n\n-->|||", email)
-            
-            //            self.users = snapshot.children.compactMap({child -> User? in
-            //                guard let child = child as? DataSnapshot else { return nil }
-            //                guard let dictionnary = child.value as? NSDictionary else {return nil }
-            //                print("dictionnary :  ", dictionnary["email"]) // TESTING
-            //                //       dictionnary.setValue(child.key, forKey: "key")
-            //                print("\n\n\n\nUser class is : \n", User(dictionnary)) // TESTING
-            //                return User(dictionnary)
-            //            })
-            
-            // snapshot is in here
+            let emailsArray = snapshot.children.compactMap({ (child) -> String? in
+                guard let child = child as? DataSnapshot else { return nil }
+                guard let dictionnary = child.value as? NSDictionary else { return nil }
+                guard let emails = dictionnary["email"] as? String else { return nil }
+                return emails
+            })
+            self.filteredSearch = emailsArray
+            print("\nthe search is\n", self.filteredSearch) // TESTING
         }
     }
     
@@ -90,14 +80,12 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.filteredSearch.count
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         return cell
-        
     }
     
     
