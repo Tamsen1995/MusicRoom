@@ -28,7 +28,6 @@ class UserSearchTableViewCell: UITableViewCell {
     
     @IBAction func followButton(_ sender: Any) {
         print("\nInside of follow Button\n")  // TESTING
-        // get the user id of the email of the current cell
         guard let email = emailAddress?.text else { fatalError("\nCould not get email address\n") }
         FirebaseManage.shared.lookForEmailInDb(email.lowercased()) { (snapshot) in
             let uidArray = snapshot.children.compactMap({ (child) -> String? in
@@ -37,7 +36,6 @@ class UserSearchTableViewCell: UITableViewCell {
                 guard let uids = dictionnary["uid"] as? String else { return nil }
                 return uids
             })
-            print("\n\nemails Array is ---  >>  ", uidArray) // TESTING
             guard let user = Auth.auth().currentUser else { fatalError("\nCould not get current user\n") }
             let followerUID = user.uid
             let followingUID = uidArray[0]
@@ -48,14 +46,8 @@ class UserSearchTableViewCell: UITableViewCell {
     // adds follower user id to the following list
     // and the following uid to the follower following list
     func follow(followerUID: String, followingUID: String) {
-        
-         // _ userId: String, _ subNode: String, _ subNodeValue: String
         FirebaseManage.shared.createUserNodeInDb(UserNode(followerUID, "following", followingUID))
         FirebaseManage.shared.createUserNodeInDb(UserNode(followingUID, "followers", followerUID))
-        
-        
-        print("\nInside of follow function : ", followerUID) // TESTING
-        print("\nInside of follow function : ", followingUID) // TESTING
     }
     
     
