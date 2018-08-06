@@ -20,6 +20,8 @@ extension LogRegController {
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 print("\nUser in verifyUserAuthState : ", (user?.email!)!)
+                
+                
                 guard let email = user?.email else { return }
                 self.redirectToHomescreen(email: email)
             } else {
