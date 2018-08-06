@@ -13,9 +13,9 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     var searchActive : Bool = false
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var filtered:[String] = []
+    @IBOutlet weak var searchBar: UISearchBar!
+    var filteredSearch: [String] = []
     
     
     //    let searchController = UISearchController(searchResultsController: nil)
@@ -23,6 +23,7 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadSampleUsers()
         // Setup the Search Controller
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,7 +36,6 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
         
     }
-    
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("\nBeginning to edit\n") // TESTING
@@ -56,14 +56,28 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         searchActive = false
     }
     
+    
+    // The search is supposed to happen by email, so when searching it will query the db for emails
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("\nSearching\n") // TESTING
+        
+        // getting an array of the searched for addresses out of the firebase
         FirebaseManage.shared.lookForEmailInDb(searchText.lowercased()) { (snapshot) in
-            print("\nSnapshot inside of textdidchange\n\n", snapshot)
-
+            let emailsArray = snapshot.children.compactMap({ (child) -> String? in
+                guard let child = child as? DataSnapshot else { return nil }
+                guard let dictionnary = child.value as? NSDictionary else { return nil }
+                guard let emails = dictionnary["email"] as? String else { return nil }
+                return emails
+            })
             
-            
-            // snapshot is in here
+            // checking if the userAddresses already exist
+            // in the filtered search array
+            for userAddress in emailsArray {
+                if self.filteredSearch.contains(userAddress) == false {
+                    self.filteredSearch.append(userAddress)
+                }
+            }
+            print("\nthe search is\n", self.filteredSearch) // TESTING
+            self.tableView.reloadData()
         }
     }
     
@@ -77,18 +91,35 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return filteredSearch.count
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
         
+        // the identifier from the storyboard
+        let cellIdentifier = "UserSearchCellIdentifier"
+        
+        // reusing cells in so that the tableview won't have to load up new ones everytime
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath ) as? UserSearchTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        let user = filteredSearch[indexPath.row]
+        cell.emailAddress.text = user
+        return cell
+    }
+    
+    private func loadSampleUsers() {
+        let user1 = "test@test.com"
+        let user2 = "Brian.corrieri@fairtrip.test"
+        let user3 = "Corentin@fairtrip.org"
+        
+        filteredSearch += [user1, user2, user3]
     }
 
     
-
+    
+    
     //
     //    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //        if(searchActive) {

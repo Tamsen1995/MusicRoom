@@ -24,23 +24,21 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
         super.viewWillAppear(true)
         
         // Everytime the view appears
-        // we check if the user is logged in or not
-        print("\n\nInside of the viewWillAppear of the logregcontroller\n\n") // TESTING
+        // check if the user is logged in or not
         verifyUserAuthState()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Facebook
         loginButton.delegate = self
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         FBSDKProfile.enableUpdates(onAccessTokenChange: true)
-        
+
         // Google
         GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance().signIn()
+        // GIDSignIn.sharedInstance().signIn()
     }
     
     

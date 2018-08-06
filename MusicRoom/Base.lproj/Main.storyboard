@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -202,25 +203,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VpV-5w-ZHO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VpV-5w-ZHO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <searchBar key="tableFooterView" contentMode="redraw" id="JWh-08-8Pi">
-                                    <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="Uw2-Fk-1aO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="393-0e-gra" id="lpQ-M2-LEh"/>
-                                    </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VZI-xx-ddh">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserSearchCellIdentifier" rowHeight="90" id="VZI-xx-ddh" customClass="UserSearchTableViewCell" customModule="MusicRoom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VZI-xx-ddh" id="zei-WI-yWI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VZI-xx-ddh" id="zei-WI-yWI" customClass="UserSearchTableViewCell" customModule="MusicRoom" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1o-ah-Wbe">
+                                                    <rect key="frame" x="37" y="11" width="300" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="V1o-ah-Wbe" firstAttribute="leading" secondItem="zei-WI-yWI" secondAttribute="leadingMargin" constant="22" id="E8s-9x-oOE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="V1o-ah-Wbe" secondAttribute="trailing" constant="23" id="JZw-Kz-q4V"/>
+                                                <constraint firstItem="V1o-ah-Wbe" firstAttribute="top" secondItem="zei-WI-yWI" secondAttribute="topMargin" id="quN-ur-zCy"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="emailAddress" destination="V1o-ah-Wbe" id="uhO-JD-JvS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -230,17 +244,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="top" secondItem="dpa-xE-Ndu" secondAttribute="top" id="O76-AV-bOL"/>
-                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="bottom" secondItem="Clq-7g-VK6" secondAttribute="bottom" id="bpX-Bd-rLn"/>
-                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="leading" secondItem="Clq-7g-VK6" secondAttribute="leading" id="qfk-s0-QPf"/>
-                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="trailing" secondItem="Clq-7g-VK6" secondAttribute="trailing" id="x9R-Wx-kuR"/>
+                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="bottom" secondItem="Clq-7g-VK6" secondAttribute="bottom" id="SAH-wf-0HR"/>
+                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="trailing" secondItem="Clq-7g-VK6" secondAttribute="trailing" id="ijq-nF-TZ1"/>
+                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="top" secondItem="dpa-xE-Ndu" secondAttribute="top" id="rwo-pb-Hvo"/>
+                            <constraint firstItem="VpV-5w-ZHO" firstAttribute="leading" secondItem="Clq-7g-VK6" secondAttribute="leading" id="wpE-Fq-awD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Clq-7g-VK6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="KXF-YJ-5f3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="searchBar" destination="JWh-08-8Pi" id="clW-eI-i2a"/>
+                        <outlet property="searchBar" destination="Uw2-Fk-1aO" id="lxj-sb-me0"/>
                         <outlet property="searchDisplayController" destination="caB-Nx-7cq" id="lGS-3p-vJs"/>
                         <outlet property="tableView" destination="VpV-5w-ZHO" id="nxt-7d-LIo"/>
                     </connections>
@@ -257,14 +271,13 @@
                 <searchDisplayController id="caB-Nx-7cq">
                     <connections>
                         <outlet property="delegate" destination="393-0e-gra" id="hz3-MY-Ccs"/>
-                        <outlet property="searchBar" destination="JWh-08-8Pi" id="MR6-BS-IFP"/>
                         <outlet property="searchContentsController" destination="393-0e-gra" id="5ug-eG-88K"/>
                         <outlet property="searchResultsDataSource" destination="393-0e-gra" id="3nA-5d-f21"/>
                         <outlet property="searchResultsDelegate" destination="393-0e-gra" id="uOi-sE-hwb"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2984.8000000000002" y="-593.25337331334333"/>
+            <point key="canvasLocation" x="3956" y="-651.72413793103453"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="zw2-D1-lU1">
@@ -316,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3F-c3-5Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3018" y="832"/>
+            <point key="canvasLocation" x="3956" y="882"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QWY-Z7-pfw">
