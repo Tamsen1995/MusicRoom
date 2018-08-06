@@ -14,7 +14,6 @@ class UserSearchTableViewCell: UITableViewCell {
     // MARK : Properties
     @IBOutlet weak var emailAddress: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,7 +25,9 @@ class UserSearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func followButton(_ sender: Any) {
+
+    
+    @IBAction func followButton(_ sender: UIButton) {
         print("\nInside of follow Button\n")  // TESTING
         guard let email = emailAddress?.text else { fatalError("\nCould not get email address\n") }
         FirebaseManage.shared.lookForEmailInDb(email.lowercased()) { (snapshot) in
@@ -36,11 +37,47 @@ class UserSearchTableViewCell: UITableViewCell {
                 guard let uids = dictionnary["uid"] as? String else { return nil }
                 return uids
             })
+            
+   
+            
             guard let user = Auth.auth().currentUser else { fatalError("\nCould not get current user\n") }
             let followerUID = user.uid
             let followingUID = uidArray[0]
+            
+            ///////////////////////////////////////////////////// TODO : implement this
+            
+            
+            // figure out if user is already following the clicked on user
+            // if so then do an unfollow action instead of a follow action
+            
+            self.checkIfFollowing(followerUID: followerUID, followingUID: followingUID)
+
+            
+            
+            //////////////////////////////////////////////////////////
             self.follow(followerUID: followerUID, followingUID: followingUID)
         }
+    }
+    
+    func checkIfFollowing(followerUID: String, followingUID: String) {
+        
+        // sender.setTitle("Unfollow", for: .normal) // I need to use this later
+
+        
+        // get into the uid node's parent node just like for email
+        // get the userids out of the follower node of the followinguid user
+        // get the userids out of the following node of the followeruid user
+        // iterate to see if the looked for id already exists.
+        FirebaseManage.shared.lookForUidInDb(followerUID) { (snapshot) in
+            let followingArray = snapshot.children.compactMap({ (child) -> String? in
+                guard let child = child as? DataSnapshot else { return nil }
+                guard let dictionnary = child.value as? NSDictionary else { return nil }
+                guard let followinUids = dictionnary["following"] as? String else { return nil }
+                return followinUids
+            })
+            print("\n\nThe array of following user ids in checkIfFollowing: ", followingArray) // TESTING
+        }
+        
     }
     
     // adds follower user id to the following list

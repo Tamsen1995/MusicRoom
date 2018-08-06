@@ -13,10 +13,11 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     var searchActive : Bool = false
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    var filteredSearch: [String] = []
     
+    var filteredSearch: [String] = []
     
     //    let searchController = UISearchController(searchResultsController: nil)
     
@@ -35,8 +36,43 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredSearch.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "UserSearchCellIdentifier"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath ) as? UserSearchTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+
+        let user = filteredSearch[indexPath.row]
+        cell.emailAddress.text = user
+        return cell
+    }
+    
+
+    // TESTING
+    private func loadSampleUsers() {
+        let user1 = "test@test.com"
+        let user2 = "Brian.corrieri@fairtrip.test"
+        let user3 = "Corentin@fairtrip.org"
+        let user4 = "yesitstam@gmail.com"
+        let user5 = "tamsen95@hotmail.de"        
+        filteredSearch += [user1, user2, user3, user4, user5] // TESTING
+    }
+    
+}
+
+// Responsible for all searchbar actions
+extension FindUsersViewController {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("\nBeginning to edit\n") // TESTING
@@ -88,74 +124,4 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // TODO :
-    // get snapshot into tableview compatible data
-    // populate all the prototype cells with the results of snapshot
-    
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredSearch.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // the identifier from the storyboard
-        let cellIdentifier = "UserSearchCellIdentifier"
-        
-        // reusing cells in so that the tableview won't have to load up new ones everytime
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath ) as? UserSearchTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
-        }
-        
-        let user = filteredSearch[indexPath.row]
-        cell.emailAddress.text = user
-        return cell
-    }
-    
-    private func loadSampleUsers() {
-        let user1 = "test@test.com"
-        let user2 = "Brian.corrieri@fairtrip.test"
-        let user3 = "Corentin@fairtrip.org"
-        let user4 = "yesitstam@gmail.com"
-        
-        filteredSearch += [user1, user2, user3, user4] // TESTING
-    }
-    
-    
-    
-    
-    //
-    //    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        if(searchActive) {
-    //            return filtered.count
-    //        }
-    //        return data.count;
-    //    }
-    //
-    //    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell;
-    //        if(searchActive){
-    //            cell.textLabel?.text = filtered[indexPath.row]
-    //        } else {
-    //            cell.textLabel?.text = data[indexPath.row];
-    //        }
-    //
-    //        return cell;
-    //    }
-    //}
-    
-    
-    
-    
-}
-
-extension FindUsersViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        // TODO
-    }
 }

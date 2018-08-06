@@ -41,6 +41,14 @@ class FirebaseManage {
             completion(snapshot)
         }
     }
+    
+    func lookForUidInDb(_ uid: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
+        let userRef = rootRef.child("users")
+        let query = userRef.queryOrdered(byChild: "uid").queryEqual(toValue: uid)
+        query.observe(.value) { (snapshot) in
+            completion(snapshot)
+        }
+    }
 
     func createUserInAuth (_ user: signUpInfo) {
         Auth.auth().createUser(withEmail: user.userName, password: user.password) {
