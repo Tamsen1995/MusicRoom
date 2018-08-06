@@ -28,11 +28,12 @@ class UsernamePromptViewController: UIViewController {
     
     @IBAction func chooseName(_ sender: Any) {
         guard let userName = username.text else { return }
-        var userNode = UserNode(self.uid, "username", userName)
         
-        FirebaseManage.shared.createUserNodeInDb(userNode)
-        userNode = UserNode(self.uid, "email", self.email)
-        FirebaseManage.shared.createUserNodeInDb(userNode)
+        FirebaseManage.shared.createUserNodeInDb(UserNode(self.uid, "username", userName))
+        FirebaseManage.shared.createUserNodeInDb(UserNode(self.uid, "email", self.email))
+        FirebaseManage.shared.createUserNodeInDb(UserNode(self.uid, "uid", self.uid))
+
+        
         print("\nUsername chosen\n") // TESTING
         self.dismiss(animated: false, completion: nil)
 
