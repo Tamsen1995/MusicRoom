@@ -28,6 +28,7 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -50,15 +51,21 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("\nCancelling edit\n") // TESTING
         searchActive = false
+        // Hide the cancel button
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
     }
     
-    
     // The search is supposed to happen by email, so when searching it will query the db for emails
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            self.filteredSearch.removeAll()
+            tableView.reloadData()
+        }
+        
         
         // getting an array of the searched for addresses out of the firebase
         FirebaseManage.shared.lookForEmailInDb(searchText.lowercased()) { (snapshot) in
@@ -93,7 +100,7 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredSearch.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // the identifier from the storyboard
@@ -117,7 +124,7 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         
         filteredSearch += [user1, user2, user3, user4] // TESTING
     }
-
+    
     
     
     
