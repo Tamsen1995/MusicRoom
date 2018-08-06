@@ -83,8 +83,8 @@ class UserSearchTableViewCell: UITableViewCell {
     // adds follower user id to the following list
     // and the following uid to the follower following list
     func follow(followerUID: String, followingUID: String) {
-        FirebaseManage.shared.createUserNodeInDb(UserNode(followerUID, "following", followingUID))
-        FirebaseManage.shared.createUserNodeInDb(UserNode(followingUID, "followers", followerUID))
+        FirebaseManage.shared.createUserNodeInDb(UserNode(followerUID, "following/\(followingUID)", true))
+        FirebaseManage.shared.createUserNodeInDb(UserNode(followingUID, "followers/\(followerUID)", true))
     }
     
     

@@ -11,9 +11,9 @@ import Foundation
 struct UserNode {
     var userId : String
     var subNode : String
-    var subNodeValue : String
+    var subNodeValue : Any
     
-    init (_ userId: String, _ subNode: String, _ subNodeValue: String) {
+    init (_ userId: String, _ subNode: String, _ subNodeValue: Any) {
         self.userId = userId
         self.subNode = subNode
         self.subNodeValue = subNodeValue
