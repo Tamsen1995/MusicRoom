@@ -94,6 +94,8 @@ extension LogRegController {
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
             if (error == nil) {
                 self.dict = result as! [String : AnyObject]
+                
+                
                 guard let email = self.dict["email"] as? String else { return }
                 self.redirectToHomescreen(email: email)
             }

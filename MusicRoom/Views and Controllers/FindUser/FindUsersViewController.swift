@@ -113,8 +113,9 @@ class FindUsersViewController: UIViewController, UITableViewDataSource, UITableV
         let user1 = "test@test.com"
         let user2 = "Brian.corrieri@fairtrip.test"
         let user3 = "Corentin@fairtrip.org"
+        let user4 = "yesitstam@gmail.com"
         
-        filteredSearch += [user1, user2, user3]
+        filteredSearch += [user1, user2, user3, user4] // TESTING
     }
 
     

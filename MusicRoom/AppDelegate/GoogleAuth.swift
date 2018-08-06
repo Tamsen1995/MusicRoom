@@ -22,13 +22,14 @@ extension AppDelegate {
         
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        let auth = Auth.auth()
+        auth.signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 print(error)
                 return
             }
-            let userNode = UserNode(authResult!.user.uid, "email", authResult!.user.email!)
-            FirebaseManage.shared.createUserNodeInDb(userNode)
+            FirebaseManage.shared.createUserNodeInDb(UserNode(authResult!.user.uid, "email", authResult!.user.email!))
+            FirebaseManage.shared.createUserNodeInDb(UserNode(authResult!.user.uid, "uid", authResult!.user.uid))
         }
     }
     
