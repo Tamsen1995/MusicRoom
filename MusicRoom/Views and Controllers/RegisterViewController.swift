@@ -65,7 +65,7 @@ class RegisterViewController: UIViewController {
             return
         }
         FirebaseManage.shared.createUserInAuth(user)
-        
+        self.present(HandleViews().switchScreen("HomeScreen"), animated: true, completion: nil)
     }
     
     
