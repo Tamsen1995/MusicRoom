@@ -65,7 +65,7 @@ class RegisterViewController: UIViewController {
             return
         }
         FirebaseManage.shared.createUserInAuth(user)
-        self.performSegue(withIdentifier: "registeredSegue", sender: self)
+        
     }
     
     
