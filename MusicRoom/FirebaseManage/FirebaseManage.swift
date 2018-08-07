@@ -67,7 +67,6 @@ class FirebaseManage {
         }
     }
     
-    
     func deleteUserNodeInDb(_ userNode: UserNode) {
         let userRef = rootRef.child(path).child(userNode.userId)
         let subNode = userRef.child(userNode.subNode)

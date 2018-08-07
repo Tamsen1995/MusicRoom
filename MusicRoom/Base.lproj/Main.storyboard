@@ -365,10 +365,10 @@
             </objects>
             <point key="canvasLocation" x="2724" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="oW4-hK-QIp">
             <objects>
-                <viewController id="3rm-el-PEh" sceneMemberID="viewController">
+                <viewController id="3rm-el-PEh" customClass="LoginViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rx6-it-ge3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,6 +394,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXn-Yk-Mng">
                                 <rect key="frame" x="0.0" y="252" width="375" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="3rm-el-PEh" eventType="touchUpInside" id="IZ2-fo-fjz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -416,6 +419,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6bd-oe-6JN"/>
                     </view>
+                    <connections>
+                        <outlet property="emailAddress" destination="PX6-1G-wUx" id="ube-8a-uJa"/>
+                        <outlet property="password" destination="Xsf-BD-qZY" id="U31-32-gz6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTL-Ru-nWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
