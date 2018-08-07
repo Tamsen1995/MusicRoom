@@ -19,7 +19,7 @@ class FirebaseManage {
     var database : Database
     private let rootRef: DatabaseReference
     let storageRef: StorageReference
-    private var path = NSLocalizedString("test", comment: "Path Firebase")
+    private var path = NSLocalizedString("TESTING", comment: "Path Firebase")
     
     func isUserRegistered(_ email: String, completion: @escaping (_ exists: Bool) -> ()) {
         self.lookForEmailInDb(email) { (snapshot) in
@@ -37,17 +37,19 @@ class FirebaseManage {
     func lookForEmailInDb(_ email: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
         let userRef = rootRef.child(path)
         let query = userRef.queryOrdered(byChild: "email").queryEqual(toValue: email)
-        query.observe(.value) { (snapshot) in
+        query.observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot)
         }
     }
     
-    func lookForUidInDb(_ uid: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
-        let userRef = rootRef.child(path)
-        let query = userRef.queryOrdered(byChild: "uid").queryEqual(toValue: uid)
-        query.observe(.value) { (snapshot) in
+
+    
+    func checkIfFollowing(_ followerUID: String, _ followingUID: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
+        let userRef = rootRef.child("\(path)/\(followerUID)/following/\(followingUID)")
+        userRef.observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot)
         }
+ 
     }
 
     func createUserInAuth (_ user: signUpInfo) {

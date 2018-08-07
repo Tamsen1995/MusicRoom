@@ -49,21 +49,30 @@ class UserSearchTableViewCell: UITableViewCell {
             // figure out if user is already following the clicked on user
             // if so then do an unfollow action instead of a follow action
             
-            self.checkIfFollowing(followerUID: followerUID, followingUID: followingUID, completion:
-                { (dictionnary) in
-                    
-                    
-                    print("\n\nThe dictionnary for the following node in the followerUID is : ", dictionnary[followingUID]) // TESTING
-                    if dictionnary[followingUID] != nil {
-                        print("\nThe follower is following the follower\n", followingUID) // TESTING
-                        //                        self.unfollow(followerUID: followerUID, followingUID: followingUID)
-                        return
-                    } else {
-                        print("\nThe follower is following the follower\n", followingUID) // TESTING
-                        self.follow(followerUID: followerUID, followingUID: followingUID)
-                        return
-                    }
+            FirebaseManage.shared.checkIfFollowing(followerUID, followingUID, { (snapshot) in
+                if snapshot.exists() {
+                    self.unfollow(followerUID: followerUID, followingUID: followingUID)
+                } else {
+                    self.follow(followerUID: followerUID, followingUID: followingUID)
+                }
             })
+            
+            
+//            self.checkIfFollowing(followerUID: followerUID, followingUID: followingUID, completion:
+//                { (dictionnary) in
+//
+//
+//                    print("\n\nThe dictionnary for the following node in the followerUID is : ", dictionnary[followingUID]) // TESTING
+//                    if dictionnary[followingUID] != nil {
+//                        print("\nThe follower is following the follower\n", followingUID) // TESTING
+//                        //                        self.unfollow(followerUID: followerUID, followingUID: followingUID)
+//                        return
+//                    } else {
+//                        print("\nThe follower is following the follower\n", followingUID) // TESTING
+//                        self.follow(followerUID: followerUID, followingUID: followingUID)
+//                        return
+//                    }
+//            })
             //////////////////////////////////////////////////////////
         }
     }
@@ -84,25 +93,6 @@ class UserSearchTableViewCell: UITableViewCell {
     }
     
     
-    func checkIfFollowing(followerUID: String, followingUID: String, completion: @escaping (_ followingDict:  NSDictionary) -> ()) {
-        FirebaseManage.shared.lookForUidInDb(followerUID) { (snapshot) in
-            let followingArray = snapshot.children.compactMap({ (child) -> NSDictionary? in
-                guard let child = child as? DataSnapshot else { return nil }
-                guard let dictionnary = child.value as? NSDictionary else { return nil }
-                guard let followinUids = dictionnary["following"] as? NSDictionary else { return nil }
-                return followinUids
-            })
-            
-            if followingArray.isEmpty != true {
-                let followingDict = followingArray[0]
-                completion(followingDict)
-            } else {
-                completion([:])
-            }
-            
-        }
-        
-    }
 
     
 }
