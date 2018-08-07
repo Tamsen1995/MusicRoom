@@ -42,27 +42,30 @@ class FirebaseManage {
         }
     }
     
-
-    
     func checkIfFollowing(_ followerUID: String, _ followingUID: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
         let userRef = rootRef.child("\(path)/\(followerUID)/following/\(followingUID)")
         userRef.observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot)
         }
- 
+
     }
 
+    // This is exclusively for the normal email registration flow
     func createUserInAuth (_ user: signUpInfo) {
         Auth.auth().createUser(withEmail: user.userName, password: user.password) {
             (user, error) in
             if error != nil {
                 print(error!)
             } else {
+                guard let uid = user?.user.uid else { fatalError("\nUser could not be registered\n") }
+                guard let email = user?.user.email else { fatalError("\nUser email was not found\n") }
+        
+                self.createUserNodeInDb(UserNode(uid, "uid", uid))
+                self.createUserNodeInDb(UserNode(uid, "email", email))
                 print("Registration successful !")
             }
         }
     }
-    
     
     func deleteUserNodeInDb(_ userNode: UserNode) {
         let userRef = rootRef.child(path).child(userNode.userId)
