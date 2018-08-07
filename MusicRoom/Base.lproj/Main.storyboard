@@ -297,7 +297,7 @@
         <!--Item 2-->
         <scene sceneID="zw2-D1-lU1">
             <objects>
-                <viewController id="AFB-An-pso" customClass="HomeScreen" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AFB-An-pso" customClass="HomeScreenViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DC3-pY-Wis">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,7 +336,21 @@
                     <view key="view" contentMode="scaleToFill" id="qGJ-Vy-iLz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-5z-SBR">
+                                <rect key="frame" x="118" y="217" width="139" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kKm-5z-SBR" firstAttribute="top" secondItem="rtr-9U-pVj" secondAttribute="top" constant="197" id="B62-eA-cGF"/>
+                            <constraint firstItem="rtr-9U-pVj" firstAttribute="trailing" secondItem="kKm-5z-SBR" secondAttribute="trailing" constant="118" id="U29-2f-BAM"/>
+                            <constraint firstItem="rtr-9U-pVj" firstAttribute="bottom" secondItem="kKm-5z-SBR" secondAttribute="bottom" constant="363" id="fWE-tK-xG7"/>
+                            <constraint firstItem="kKm-5z-SBR" firstAttribute="leading" secondItem="rtr-9U-pVj" secondAttribute="leading" constant="118" id="oFf-4Z-oCw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rtr-9U-pVj"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2ZN-YS-d41"/>
@@ -344,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3F-c3-5Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4841" y="-470"/>
+            <point key="canvasLocation" x="4840.8000000000002" y="-470.01499250374815"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QWY-Z7-pfw">

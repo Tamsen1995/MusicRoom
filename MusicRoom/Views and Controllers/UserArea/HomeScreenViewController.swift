@@ -13,7 +13,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 import FacebookLogin
 
-class HomeScreen: UIViewController {
+class HomeScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
