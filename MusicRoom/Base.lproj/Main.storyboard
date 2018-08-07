@@ -332,7 +332,7 @@
         <!--Item-->
         <scene sceneID="lZn-3K-kk8">
             <objects>
-                <viewController id="A1T-Ya-2i8" sceneMemberID="viewController">
+                <viewController id="A1T-Ya-2i8" customClass="ProfileScreenViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qGJ-Vy-iLz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -355,6 +355,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2ZN-YS-d41"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="displayedEmail" destination="kKm-5z-SBR" id="ZZ6-YN-T1T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3F-c3-5Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
