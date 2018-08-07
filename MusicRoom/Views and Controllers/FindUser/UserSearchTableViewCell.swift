@@ -51,10 +51,17 @@ class UserSearchTableViewCell: UITableViewCell {
             
             self.checkIfFollowing(followerUID: followerUID, followingUID: followingUID, completion:
                 { (dictionnary) in
+                    
+                    
+                    print("\n\nThe dictionnary for the following node in the followerUID is : ", dictionnary[followingUID]) // TESTING
                     if dictionnary[followingUID] != nil {
-                        self.unfollow(followerUID: followerUID, followingUID: followingUID)
+                        print("\nThe follower is following the follower\n", followingUID) // TESTING
+                        //                        self.unfollow(followerUID: followerUID, followingUID: followingUID)
+                        return
                     } else {
+                        print("\nThe follower is following the follower\n", followingUID) // TESTING
                         self.follow(followerUID: followerUID, followingUID: followingUID)
+                        return
                     }
             })
             //////////////////////////////////////////////////////////
@@ -63,29 +70,21 @@ class UserSearchTableViewCell: UITableViewCell {
     
     
     func unfollow(followerUID: String, followingUID: String) {
-        print("Remove -> ", followerUID, " from the following node in" , followingUID)
-        print("Remove -> ", followingUID, " from the follower node in" , followerUID)
-
-        
-    }
+        print("\nInside of the unfollow function\n") // TESTING
+        FirebaseManage.shared.deleteUserNodeInDb(UserNode(followerUID, "following/\(followingUID)", false))
+        FirebaseManage.shared.deleteUserNodeInDb(UserNode(followingUID, "followers/\(followerUID)", false))
+      }
     
     // adds follower user id to the following list
     // and the following uid to the follower following list
     func follow(followerUID: String, followingUID: String) {
+        print("\nInside of the follow function\n") // TESTING
         FirebaseManage.shared.createUserNodeInDb(UserNode(followerUID, "following/\(followingUID)", true))
         FirebaseManage.shared.createUserNodeInDb(UserNode(followingUID, "followers/\(followerUID)", true))
     }
     
     
     func checkIfFollowing(followerUID: String, followingUID: String, completion: @escaping (_ followingDict:  NSDictionary) -> ()) {
-        
-        // sender.setTitle("Unfollow", for: .normal) // I need to use this later
-        
-        
-        // get into the uid node's parent node just like for email
-        // get the userids out of the follower node of the followinguid user
-        // get the userids out of the following node of the followeruid user
-        // iterate to see if the looked for id already exists.
         FirebaseManage.shared.lookForUidInDb(followerUID) { (snapshot) in
             let followingArray = snapshot.children.compactMap({ (child) -> NSDictionary? in
                 guard let child = child as? DataSnapshot else { return nil }
@@ -94,16 +93,12 @@ class UserSearchTableViewCell: UITableViewCell {
                 return followinUids
             })
             
-            
-            
             if followingArray.isEmpty != true {
                 let followingDict = followingArray[0]
                 completion(followingDict)
             } else {
                 completion([:])
             }
-            
-            
             
         }
         
