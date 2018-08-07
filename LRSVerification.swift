@@ -35,13 +35,7 @@ extension LogRegController {
     func redirectToHomescreen(email: String) {
         print("\nInside of the redirectHomeScreen function\n") // TESTING
         FirebaseManage.shared.isUserRegistered(email, completion: { (bool) in
-            if bool == true {
-                print("\nInside of getFBUserData\n") // TESTING
-                self.switchToHomeScreen()
-                
-            } else {
-                print("\n\nIn verifyUserAuthState user is not registered\n") // TESTING
-            }
+            if bool == true { self.switchToHomeScreen() }
         })
     }
     

@@ -19,7 +19,7 @@ class FirebaseManage {
     var database : Database
     private let rootRef: DatabaseReference
     let storageRef: StorageReference
-    private var path = NSLocalizedString("Users", comment: "Path Firebase")
+    private var path = NSLocalizedString("TESTING", comment: "Path Firebase")
     
     func isUserRegistered(_ email: String, completion: @escaping (_ exists: Bool) -> ()) {
         self.lookForEmailInDb(email) { (snapshot) in
@@ -35,11 +35,21 @@ class FirebaseManage {
     
     // looks for a specific email within the database
     func lookForEmailInDb(_ email: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
-        let userRef = rootRef.child("users")
+        let userRef = rootRef.child(path)
         let query = userRef.queryOrdered(byChild: "email").queryEqual(toValue: email)
-        query.observe(.value) { (snapshot) in
+        query.observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot)
         }
+    }
+    
+
+    
+    func checkIfFollowing(_ followerUID: String, _ followingUID: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
+        let userRef = rootRef.child("\(path)/\(followerUID)/following/\(followingUID)")
+        userRef.observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot)
+        }
+ 
     }
 
     func createUserInAuth (_ user: signUpInfo) {
@@ -53,10 +63,18 @@ class FirebaseManage {
         }
     }
     
+    
+    func deleteUserNodeInDb(_ userNode: UserNode) {
+        let userRef = rootRef.child(path).child(userNode.userId)
+        let subNode = userRef.child(userNode.subNode)
+        subNode.removeValue()
+    }
+    
     // takes in the user id and then
     // creates a node for it inside of the databe
     func createUserNodeInDb(_ userNode: UserNode) {
-        let userRef = rootRef.child("users").child(userNode.userId)
+        print("The node we're writing to is : ", path) // TESTING
+        let userRef = rootRef.child(path).child(userNode.userId)
         let subNode = userRef.child(userNode.subNode)
         subNode.setValue(userNode.subNodeValue)
         // set subnode

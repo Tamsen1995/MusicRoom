@@ -14,7 +14,6 @@ class UserSearchTableViewCell: UITableViewCell {
     // MARK : Properties
     @IBOutlet weak var emailAddress: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,7 +25,9 @@ class UserSearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func followButton(_ sender: Any) {
+    
+    
+    @IBAction func followButton(_ sender: UIButton) {
         print("\nInside of follow Button\n")  // TESTING
         guard let email = emailAddress?.text else { fatalError("\nCould not get email address\n") }
         FirebaseManage.shared.lookForEmailInDb(email.lowercased()) { (snapshot) in
@@ -36,19 +37,62 @@ class UserSearchTableViewCell: UITableViewCell {
                 guard let uids = dictionnary["uid"] as? String else { return nil }
                 return uids
             })
+            
+            
             guard let user = Auth.auth().currentUser else { fatalError("\nCould not get current user\n") }
             let followerUID = user.uid
             let followingUID = uidArray[0]
-            self.follow(followerUID: followerUID, followingUID: followingUID)
+            
+            ///////////////////////////////////////////////////// TODO : implement this
+            
+            
+            // figure out if user is already following the clicked on user
+            // if so then do an unfollow action instead of a follow action
+            
+            FirebaseManage.shared.checkIfFollowing(followerUID, followingUID, { (snapshot) in
+                if snapshot.exists() {
+                    self.unfollow(followerUID: followerUID, followingUID: followingUID)
+                } else {
+                    self.follow(followerUID: followerUID, followingUID: followingUID)
+                }
+            })
+            
+            
+//            self.checkIfFollowing(followerUID: followerUID, followingUID: followingUID, completion:
+//                { (dictionnary) in
+//
+//
+//                    print("\n\nThe dictionnary for the following node in the followerUID is : ", dictionnary[followingUID]) // TESTING
+//                    if dictionnary[followingUID] != nil {
+//                        print("\nThe follower is following the follower\n", followingUID) // TESTING
+//                        //                        self.unfollow(followerUID: followerUID, followingUID: followingUID)
+//                        return
+//                    } else {
+//                        print("\nThe follower is following the follower\n", followingUID) // TESTING
+//                        self.follow(followerUID: followerUID, followingUID: followingUID)
+//                        return
+//                    }
+//            })
+            //////////////////////////////////////////////////////////
         }
     }
+    
+    
+    func unfollow(followerUID: String, followingUID: String) {
+        print("\nInside of the unfollow function\n") // TESTING
+        FirebaseManage.shared.deleteUserNodeInDb(UserNode(followerUID, "following/\(followingUID)", false))
+        FirebaseManage.shared.deleteUserNodeInDb(UserNode(followingUID, "followers/\(followerUID)", false))
+      }
     
     // adds follower user id to the following list
     // and the following uid to the follower following list
     func follow(followerUID: String, followingUID: String) {
-        FirebaseManage.shared.createUserNodeInDb(UserNode(followerUID, "following", followingUID))
-        FirebaseManage.shared.createUserNodeInDb(UserNode(followingUID, "followers", followerUID))
+        print("\nInside of the follow function\n") // TESTING
+        FirebaseManage.shared.createUserNodeInDb(UserNode(followerUID, "following/\(followingUID)", true))
+        FirebaseManage.shared.createUserNodeInDb(UserNode(followingUID, "followers/\(followerUID)", true))
     }
     
+    
+
     
 }

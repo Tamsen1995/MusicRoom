@@ -16,6 +16,7 @@
 		674550D42113411500C0D1FD /* UsernamePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674550D32113411500C0D1FD /* UsernamePromptViewController.swift */; };
 		67598A142114C1F4005A2C46 /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67598A132114C1F4005A2C46 /* UserSearchTableViewCell.swift */; };
 		67816FE8210A2261008062BB /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67816FE7210A2261008062BB /* SignUpInfo.swift */; };
+		678C594B2119968E003E7C0E /* SearchUserFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C594A2119968E003E7C0E /* SearchUserFunctions.swift */; };
 		67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */; };
 		67AAD57F210B30BA00328A4D /* GoogleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AAD57E210B30BA00328A4D /* GoogleAuth.swift */; };
 		67B180AD20E52E7400DB55E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B180AC20E52E7400DB55E2 /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		674550D32113411500C0D1FD /* UsernamePromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernamePromptViewController.swift; sourceTree = "<group>"; };
 		67598A132114C1F4005A2C46 /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
 		67816FE7210A2261008062BB /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
+		678C594A2119968E003E7C0E /* SearchUserFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserFunctions.swift; sourceTree = "<group>"; };
 		67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		67AAD57E210B30BA00328A4D /* GoogleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuth.swift; sourceTree = "<group>"; };
 		67B180A920E52E7400DB55E2 /* MusicRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				67E71B9821122B4100080AE5 /* FindUsersViewController.swift */,
+				678C594A2119968E003E7C0E /* SearchUserFunctions.swift */,
 				67598A132114C1F4005A2C46 /* UserSearchTableViewCell.swift */,
 			);
 			path = FindUser;
@@ -382,6 +385,7 @@
 			files = (
 				67816FE8210A2261008062BB /* SignUpInfo.swift in Sources */,
 				67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */,
+				678C594B2119968E003E7C0E /* SearchUserFunctions.swift in Sources */,
 				67AAD57F210B30BA00328A4D /* GoogleAuth.swift in Sources */,
 				67092238210F51C600FDBE67 /* LRSVerification.swift in Sources */,
 				67E71B9921122B4100080AE5 /* FindUsersViewController.swift in Sources */,

@@ -11,7 +11,6 @@ import UIKit
 
 class HandleViews: UIViewController {
     func switchScreen(_ identifier: String) -> UIViewController {
-        print("\nInside of switchStoryboard\n") // TESTING
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: identifier) as UIViewController
         return controller

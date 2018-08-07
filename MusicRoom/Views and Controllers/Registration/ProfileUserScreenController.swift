@@ -25,10 +25,8 @@ class ProfileUserScreenController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
  
     @IBAction func logOut(_ sender: Any) {
-        print("\nInside of logout\n") // TESTING
         let firebaseAuth = Auth.auth()
         do {
             let manager = FBSDKLoginManager()

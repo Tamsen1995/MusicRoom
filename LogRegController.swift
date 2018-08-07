@@ -38,7 +38,6 @@ class LogRegController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonD
 
         // Google
         GIDSignIn.sharedInstance().uiDelegate = self
-        // GIDSignIn.sharedInstance().signIn()
     }
     
     
