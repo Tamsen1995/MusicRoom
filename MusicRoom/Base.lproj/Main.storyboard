@@ -292,12 +292,12 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3956" y="-651.72413793103453"/>
+            <point key="canvasLocation" x="3956" y="-271"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="zw2-D1-lU1">
             <objects>
-                <viewController id="AFB-An-pso" customClass="ProfileUserScreenController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AFB-An-pso" customClass="HomeScreen" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DC3-pY-Wis">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -327,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epC-K3-elx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3956" y="149.77511244377811"/>
+            <point key="canvasLocation" x="3182" y="-470"/>
         </scene>
         <!--Item-->
         <scene sceneID="lZn-3K-kk8">
@@ -344,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3F-c3-5Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3956" y="882"/>
+            <point key="canvasLocation" x="4841" y="-470"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QWY-Z7-pfw">
@@ -357,13 +357,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="AFB-An-pso" kind="relationship" relationship="viewControllers" id="0WX-8V-paB"/>
-                        <segue destination="A1T-Ya-2i8" kind="relationship" relationship="viewControllers" id="BhL-YN-lh0"/>
                         <segue destination="393-0e-gra" kind="relationship" relationship="viewControllers" id="QjQ-XA-2N6"/>
+                        <segue destination="A1T-Ya-2i8" kind="relationship" relationship="viewControllers" id="VaG-2P-BVw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4x-7R-gTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2724" y="138.98050974512745"/>
+            <point key="canvasLocation" x="3956" y="-1174"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="oW4-hK-QIp">
