@@ -16,10 +16,7 @@ class ProfileScreenViewController: UIViewController {
         super.viewDidLoad()
         
         getEmailIntoProfile()
-        
-        // Do any additional setup after loading the view.
     }
-    
     
     func getEmailIntoProfile() {
         guard let uid = Auth.auth().currentUser?.uid else {
@@ -27,22 +24,20 @@ class ProfileScreenViewController: UIViewController {
         }
         FirebaseManage.shared.retrieveUserInfo(uid: uid, { (snapshot) in
             if !snapshot.exists() { return }
-
-            for elem in snapshot.children {
-                print(elem) // TESTING
-                // Need to figure out how to handle the data snapshot
-            }
             
-//            print(snapshot.children)
-//                if let email = snapshot.ch as? String {
-//                    print("\nEmail is good\n", email)
-//                }
-            
+            // Here the we extract a certain key out of the snapshot
+            let keyValue = self.extractKeyValueFromSnapshot(key: "email", snapshot: snapshot)
+            guard let email = keyValue else { return }
+            self.displayedEmail.text = email
         })
     }
     
-    
-    
-    
-    
+    func extractKeyValueFromSnapshot(key: String, snapshot: DataSnapshot) -> String? {
+        for child in snapshot.children {
+            if let elem = child as? DataSnapshot {
+                if elem.key == "email" { return elem.value as? String }
+            }
+        }
+        return nil
+    }
 }
