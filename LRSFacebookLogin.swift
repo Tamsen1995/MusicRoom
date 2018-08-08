@@ -93,7 +93,9 @@ extension LogRegController {
         print("\nInside of getFBUserData\n") // TESTING
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
             
+            
             print("\n\nGETFBUDERDATA  : ", result) // TESTING
+
             // TODO : So right here I need to get the picture into the firebase storage
             
             if (error == nil) {

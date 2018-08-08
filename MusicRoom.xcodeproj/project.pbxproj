@@ -29,7 +29,7 @@
 		67B180BF20E5303800DB55E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67B180BE20E5303800DB55E2 /* GoogleService-Info.plist */; };
 		67D2BE3E2119FA1F0090323B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2BE3D2119FA1F0090323B /* LoginViewController.swift */; };
 		67E71B952111DAA100080AE5 /* UserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B942111DAA100080AE5 /* UserNode.swift */; };
-		67E71B972112080000080AE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B962112080000080AE5 /* User.swift */; };
+		67E71B972112080000080AE5 /* FacebookUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B962112080000080AE5 /* FacebookUser.swift */; };
 		67E71B9921122B4100080AE5 /* FindUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B9821122B4100080AE5 /* FindUsersViewController.swift */; };
 		67F13786211AF431000142D2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13785211AF431000142D2 /* EditProfileViewController.swift */; };
 		67F13789211AF8A3000142D2 /* FetchProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13788211AF8A3000142D2 /* FetchProfileInfo.swift */; };
@@ -61,7 +61,7 @@
 		67B180BE20E5303800DB55E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67D2BE3D2119FA1F0090323B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67E71B942111DAA100080AE5 /* UserNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNode.swift; sourceTree = "<group>"; };
-		67E71B962112080000080AE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		67E71B962112080000080AE5 /* FacebookUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookUser.swift; sourceTree = "<group>"; };
 		67E71B9821122B4100080AE5 /* FindUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUsersViewController.swift; sourceTree = "<group>"; };
 		67F13785211AF431000142D2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		67F13788211AF8A3000142D2 /* FetchProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileInfo.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				67816FE7210A2261008062BB /* SignUpInfo.swift */,
-				67E71B962112080000080AE5 /* User.swift */,
+				67E71B962112080000080AE5 /* FacebookUser.swift */,
 				67E71B942111DAA100080AE5 /* UserNode.swift */,
 			);
 			path = Model;
@@ -437,7 +437,7 @@
 				67816735211B16AB00F204F1 /* EmailEditViewController.swift in Sources */,
 				674550D42113411500C0D1FD /* UsernamePromptViewController.swift in Sources */,
 				6709223A210F5BC900FDBE67 /* LRSFacebookLogin.swift in Sources */,
-				67E71B972112080000080AE5 /* User.swift in Sources */,
+				67E71B972112080000080AE5 /* FacebookUser.swift in Sources */,
 				67E71B952111DAA100080AE5 /* UserNode.swift in Sources */,
 				67D2BE3E2119FA1F0090323B /* LoginViewController.swift in Sources */,
 				67598A142114C1F4005A2C46 /* UserSearchTableViewCell.swift in Sources */,
