@@ -9,7 +9,11 @@
 import Foundation
 import Firebase
 
+
+// Responsible for fetching profile information into various screens
 class FetchProfileInfo {
+    
+    
     func getEmailIntoProfile( _ completion: @escaping (_ email: String) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else {
             fatalError("\nUser id could not be retrieved on the ProfileScreenViewController\n")
@@ -24,6 +28,8 @@ class FetchProfileInfo {
         })
     }
     
+    // this takes in a snapshot with several children and a key value
+    // it will return the value of whatever key has been indicated.
     func extractKeyValueFromSnapshot(key: String, snapshot: DataSnapshot) -> String? {
         for child in snapshot.children {
             if let elem = child as? DataSnapshot {

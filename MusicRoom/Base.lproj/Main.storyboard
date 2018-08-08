@@ -380,8 +380,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXJ-sA-tZB">
-                                <rect key="frame" x="118" y="392" width="139" height="38"/>
+                                <rect key="frame" x="82" y="391" width="211" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -396,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8Z-a0-HnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5895" y="-470"/>
+            <point key="canvasLocation" x="5893.6000000000004" y="-470.01499250374815"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QWY-Z7-pfw">
