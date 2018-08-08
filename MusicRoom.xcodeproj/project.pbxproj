@@ -30,6 +30,8 @@
 		67E71B952111DAA100080AE5 /* UserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B942111DAA100080AE5 /* UserNode.swift */; };
 		67E71B972112080000080AE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B962112080000080AE5 /* User.swift */; };
 		67E71B9921122B4100080AE5 /* FindUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E71B9821122B4100080AE5 /* FindUsersViewController.swift */; };
+		67F13786211AF431000142D2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13785211AF431000142D2 /* EditProfileViewController.swift */; };
+		67F13789211AF8A3000142D2 /* FetchProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13788211AF8A3000142D2 /* FetchProfileInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		67E71B942111DAA100080AE5 /* UserNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNode.swift; sourceTree = "<group>"; };
 		67E71B962112080000080AE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		67E71B9821122B4100080AE5 /* FindUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUsersViewController.swift; sourceTree = "<group>"; };
+		67F13785211AF431000142D2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		67F13788211AF8A3000142D2 /* FetchProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfileInfo.swift; sourceTree = "<group>"; };
 		C0B13D70C78B00E2E34AFF7F /* Pods-MusicRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicRoom/Pods-MusicRoom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +102,7 @@
 			children = (
 				6709223D210F625A00FDBE67 /* HomeScreenViewController.swift */,
 				67598A102114C17E005A2C46 /* FindUser */,
-				67275EDD211A06B7005E5F46 /* ProfileScreenViewController.swift */,
+				67F13784211AF3BE000142D2 /* Profile */,
 			);
 			path = UserArea;
 			sourceTree = "<group>";
@@ -193,6 +197,24 @@
 				67B180B820E52E7400DB55E2 /* Info.plist */,
 			);
 			path = MusicRoom;
+			sourceTree = "<group>";
+		};
+		67F13784211AF3BE000142D2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				67F13787211AF860000142D2 /* Helpers */,
+				67275EDD211A06B7005E5F46 /* ProfileScreenViewController.swift */,
+				67F13785211AF431000142D2 /* EditProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		67F13787211AF860000142D2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				67F13788211AF8A3000142D2 /* FetchProfileInfo.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8D5752350EE5107BBF411E9F /* Frameworks */ = {
@@ -404,6 +426,8 @@
 				67AAD57F210B30BA00328A4D /* GoogleAuth.swift in Sources */,
 				67092238210F51C600FDBE67 /* LRSVerification.swift in Sources */,
 				67E71B9921122B4100080AE5 /* FindUsersViewController.swift in Sources */,
+				67F13786211AF431000142D2 /* EditProfileViewController.swift in Sources */,
+				67F13789211AF8A3000142D2 /* FetchProfileInfo.swift in Sources */,
 				6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */,
 				6709223E210F625A00FDBE67 /* HomeScreenViewController.swift in Sources */,
 				67092241210F699400FDBE67 /* HandleViews.swift in Sources */,
