@@ -62,7 +62,7 @@ extension LogRegController {
     func promptForUserName (authResult: AuthDataResult?) {
         
         // check if user is registered
-        FirebaseManage.shared.isUserRegistered(authResult!.user.email!, completion: { (bool) in
+        FirebaseManage.shared.isUserRegistered(uid: authResult!.user.uid, completion: { (bool) in
             if bool == false {
                 self.uid = authResult!.user.uid
                 self.email = authResult!.user.email!
@@ -96,8 +96,9 @@ extension LogRegController {
                 self.dict = result as! [String : AnyObject]
                 
                 
-                guard let email = self.dict["email"] as? String else { return }
-                self.redirectToHomescreen(email: email)
+                guard let uid = self.dict["uid"] as? String else { return }
+                print("\n\n\nTHE USER ID INSIDE OF GETFBUSERDATA:   :  ", uid) // TESTING
+                self.redirectToHomescreen(uid: uid)
             }
             else {
                 print("\nError inside of getFBUserData : ", error)

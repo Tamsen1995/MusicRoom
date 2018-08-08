@@ -21,8 +21,8 @@ class FirebaseManage {
     let storageRef: StorageReference
     private var path = NSLocalizedString("TESTING", comment: "Path Firebase")
     
-    func isUserRegistered(_ email: String, completion: @escaping (_ exists: Bool) -> ()) {
-        self.lookForEmailInDb(email) { (snapshot) in
+    func isUserRegistered(uid: String, completion: @escaping (_ exists: Bool) -> ()) {
+        self.lookForUidInDb(uid) { (snapshot) in
             if snapshot.exists() {
                 print("User is registered") // TESTING
                 completion(true)
@@ -37,6 +37,14 @@ class FirebaseManage {
     func lookForEmailInDb(_ email: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
         let userRef = rootRef.child(path)
         let query = userRef.queryOrdered(byChild: "email").queryEqual(toValue: email)
+        query.observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot)
+        }
+    }
+    
+    func lookForUidInDb(_ uid: String, _ completion: @escaping(_ result: DataSnapshot) -> Void) {
+        let userRef = rootRef.child(path)
+        let query = userRef.child(uid)
         query.observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot)
         }

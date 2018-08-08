@@ -21,10 +21,5 @@ class ProfileScreenViewController: UIViewController {
             self.displayedEmail.text = email
         }
     }
-        
-    
-    
-    
-    
-    
+
 }
