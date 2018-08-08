@@ -16,6 +16,7 @@
 		6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736E483210A1A8F0022F94E /* FirebaseManage.swift */; };
 		674550D42113411500C0D1FD /* UsernamePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674550D32113411500C0D1FD /* UsernamePromptViewController.swift */; };
 		67598A142114C1F4005A2C46 /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67598A132114C1F4005A2C46 /* UserSearchTableViewCell.swift */; };
+		67816735211B16AB00F204F1 /* EmailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67816734211B16AB00F204F1 /* EmailEditViewController.swift */; };
 		67816FE8210A2261008062BB /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67816FE7210A2261008062BB /* SignUpInfo.swift */; };
 		678C594B2119968E003E7C0E /* SearchUserFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C594A2119968E003E7C0E /* SearchUserFunctions.swift */; };
 		67A8E69820EA28F100EB8D18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */; };
@@ -45,6 +46,7 @@
 		6736E483210A1A8F0022F94E /* FirebaseManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManage.swift; sourceTree = "<group>"; };
 		674550D32113411500C0D1FD /* UsernamePromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernamePromptViewController.swift; sourceTree = "<group>"; };
 		67598A132114C1F4005A2C46 /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
+		67816734211B16AB00F204F1 /* EmailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEditViewController.swift; sourceTree = "<group>"; };
 		67816FE7210A2261008062BB /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		678C594A2119968E003E7C0E /* SearchUserFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserFunctions.swift; sourceTree = "<group>"; };
 		67A8E69720EA28F100EB8D18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				67F13787211AF860000142D2 /* Helpers */,
 				67275EDD211A06B7005E5F46 /* ProfileScreenViewController.swift */,
 				67F13785211AF431000142D2 /* EditProfileViewController.swift */,
+				67816734211B16AB00F204F1 /* EmailEditViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				6736E484210A1A8F0022F94E /* FirebaseManage.swift in Sources */,
 				6709223E210F625A00FDBE67 /* HomeScreenViewController.swift in Sources */,
 				67092241210F699400FDBE67 /* HandleViews.swift in Sources */,
+				67816735211B16AB00F204F1 /* EmailEditViewController.swift in Sources */,
 				674550D42113411500C0D1FD /* UsernamePromptViewController.swift in Sources */,
 				6709223A210F5BC900FDBE67 /* LRSFacebookLogin.swift in Sources */,
 				67E71B972112080000080AE5 /* User.swift in Sources */,

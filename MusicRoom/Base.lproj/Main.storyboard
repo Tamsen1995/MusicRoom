@@ -403,10 +403,10 @@
             </objects>
             <point key="canvasLocation" x="6862" y="-470"/>
         </scene>
-        <!--View Controller-->
+        <!--Email Edit View Controller-->
         <scene sceneID="fqO-53-rvr">
             <objects>
-                <viewController id="arm-By-Cjx" sceneMemberID="viewController">
+                <viewController id="arm-By-Cjx" customClass="EmailEditViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Byk-zX-NeY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -420,6 +420,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsT-VB-GY5">
                                 <rect key="frame" x="148" y="178" width="79" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitNewEmail:" destination="arm-By-Cjx" eventType="touchUpInside" id="ld0-mf-F7b"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -434,6 +437,9 @@
                         <viewLayoutGuide key="safeArea" id="Tou-UP-Qja"/>
                     </view>
                     <navigationItem key="navigationItem" id="f2S-3s-pxc"/>
+                    <connections>
+                        <outlet property="modifiedEmail" destination="f5f-T3-5Bf" id="acp-tt-Gur"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7k4-g0-u3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
