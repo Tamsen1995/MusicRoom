@@ -329,20 +329,28 @@
             </objects>
             <point key="canvasLocation" x="3182" y="-470"/>
         </scene>
-        <!--Item-->
+        <!--Profile Screen View Controller-->
         <scene sceneID="lZn-3K-kk8">
             <objects>
                 <viewController id="A1T-Ya-2i8" customClass="ProfileScreenViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qGJ-Vy-iLz">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="qGJ-Vy-iLz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-5z-SBR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-5z-SBR">
                                 <rect key="frame" x="118" y="217" width="139" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1R-UJ-bvN">
+                                <rect key="frame" x="100" y="160" width="175" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit Profile"/>
+                                <connections>
+                                    <segue destination="hWf-d9-anr" kind="show" id="9KA-k2-Y6u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -353,7 +361,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rtr-9U-pVj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2ZN-YS-d41"/>
+                    <navigationItem key="navigationItem" id="ddY-H7-NHS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="displayedEmail" destination="kKm-5z-SBR" id="ZZ6-YN-T1T"/>
@@ -361,7 +369,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3F-c3-5Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4840.8000000000002" y="-470.01499250374815"/>
+            <point key="canvasLocation" x="5780" y="-470.01499250374815"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="Sl5-fF-18H">
+            <objects>
+                <viewController id="hWf-d9-anr" customClass="EditProfileViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JGe-Zt-ZKh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXJ-sA-tZB">
+                                <rect key="frame" x="82" y="391" width="211" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Gm4-U1-Maz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="df8-Lp-1H0"/>
+                    <connections>
+                        <outlet property="emailAddress" destination="LXJ-sA-tZB" id="Ym1-R5-TG2"/>
+                        <segue destination="arm-By-Cjx" kind="show" identifier="presentEmailEdit" id="SHh-mu-5Sw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8Z-a0-HnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6862" y="-470"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fqO-53-rvr">
+            <objects>
+                <viewController id="arm-By-Cjx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Byk-zX-NeY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Tou-UP-Qja"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="f2S-3s-pxc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7k4-g0-u3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8009" y="-470"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QWY-Z7-pfw">
@@ -375,7 +431,7 @@
                     <connections>
                         <segue destination="AFB-An-pso" kind="relationship" relationship="viewControllers" id="0WX-8V-paB"/>
                         <segue destination="393-0e-gra" kind="relationship" relationship="viewControllers" id="QjQ-XA-2N6"/>
-                        <segue destination="A1T-Ya-2i8" kind="relationship" relationship="viewControllers" id="VaG-2P-BVw"/>
+                        <segue destination="5sR-tY-AM8" kind="relationship" relationship="viewControllers" id="VaG-2P-BVw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4x-7R-gTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -444,6 +500,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTL-Ru-nWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1864.8" y="-217.24137931034485"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="AS4-QW-KLS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5sR-tY-AM8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2ZN-YS-d41"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DoF-Wa-85b">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="A1T-Ya-2i8" kind="relationship" relationship="rootViewController" id="bKc-RA-Bnr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCM-Bc-858" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4840.8000000000002" y="-470.01499250374815"/>
         </scene>
     </scenes>
 </document>
