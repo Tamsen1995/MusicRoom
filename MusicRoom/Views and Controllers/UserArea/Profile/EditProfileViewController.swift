@@ -25,7 +25,7 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func editEmailTap(sender: UITapGestureRecognizer) {
-        print("tap working")
+        self.performSegue(withIdentifier: "presentEmailEdit", sender: self)
     }
 
     override func didReceiveMemoryWarning() {
