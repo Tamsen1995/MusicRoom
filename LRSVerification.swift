@@ -19,9 +19,9 @@ extension LogRegController {
         if FBSDKAccessToken.current() != nil { getFBUserData() }
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
-                print("\nUser in verifyUserAuthState : ", (user?.email!)!)
+                print("\nUser in verifyUserAuthState : ", (user?.email!)!) // TESTING
                 
-                
+                print("\n\n\nUser inside of facebook verfify is : ", user) // TESTING
                 guard let uid = user?.uid else { return }
                 self.redirectToHomescreen(uid: uid)
             } else {
