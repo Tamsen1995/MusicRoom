@@ -80,8 +80,18 @@ class FirebaseManage {
         let userRef = rootRef.child(path).child(userNode.userId)
         let subNode = userRef.child(userNode.subNode)
         subNode.setValue(userNode.subNodeValue)
-        // set subnode
-        // set subnode value
+    }
+    
+    
+    // retrieves all the info found on a node with the given user id
+    func retrieveUserInfo(uid: String, _ completion: @escaping (_ result: DataSnapshot) -> Void) {
+        let userRef = rootRef.child(path)
+        let query = userRef.child(uid)
+        query.observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot)
+        }
+        print("The user id is : ", uid) // TESTING
+        
     }
     
     private init () {
