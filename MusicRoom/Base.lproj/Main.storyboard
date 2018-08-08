@@ -338,7 +338,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-5z-SBR">
-                                <rect key="frame" x="118" y="217" width="139" height="38"/>
+                                <rect key="frame" x="118" y="261" width="139" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -403,21 +403,47 @@
             </objects>
             <point key="canvasLocation" x="6862" y="-470"/>
         </scene>
-        <!--View Controller-->
+        <!--Email Edit View Controller-->
         <scene sceneID="fqO-53-rvr">
             <objects>
-                <viewController id="arm-By-Cjx" sceneMemberID="viewController">
+                <viewController id="arm-By-Cjx" customClass="EmailEditViewController" customModule="MusicRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Byk-zX-NeY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5f-T3-5Bf">
+                                <rect key="frame" x="49" y="125" width="277" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsT-VB-GY5">
+                                <rect key="frame" x="148" y="178" width="79" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitNewEmail:" destination="arm-By-Cjx" eventType="touchUpInside" id="ld0-mf-F7b"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f5f-T3-5Bf" firstAttribute="leading" secondItem="Tou-UP-Qja" secondAttribute="leading" constant="49" id="B5Y-Z5-dOw"/>
+                            <constraint firstItem="DsT-VB-GY5" firstAttribute="leading" secondItem="Tou-UP-Qja" secondAttribute="leading" constant="148" id="Rsz-DG-YlW"/>
+                            <constraint firstItem="Tou-UP-Qja" firstAttribute="trailing" secondItem="f5f-T3-5Bf" secondAttribute="trailing" constant="49" id="dId-SM-lhH"/>
+                            <constraint firstItem="Tou-UP-Qja" firstAttribute="trailing" secondItem="DsT-VB-GY5" secondAttribute="trailing" constant="148" id="fTz-oy-Rcu"/>
+                            <constraint firstItem="DsT-VB-GY5" firstAttribute="top" secondItem="f5f-T3-5Bf" secondAttribute="bottom" constant="23" id="lof-3L-Tuf"/>
+                            <constraint firstItem="f5f-T3-5Bf" firstAttribute="top" secondItem="Tou-UP-Qja" secondAttribute="top" constant="61" id="tnd-fi-bBi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Tou-UP-Qja"/>
                     </view>
                     <navigationItem key="navigationItem" id="f2S-3s-pxc"/>
+                    <connections>
+                        <outlet property="modifiedEmail" destination="f5f-T3-5Bf" id="acp-tt-Gur"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7k4-g0-u3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8009" y="-470"/>
+            <point key="canvasLocation" x="8008.8000000000002" y="-470.01499250374815"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QWY-Z7-pfw">

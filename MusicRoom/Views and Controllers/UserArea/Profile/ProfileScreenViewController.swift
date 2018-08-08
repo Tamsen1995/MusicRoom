@@ -14,8 +14,12 @@ class ProfileScreenViewController: UIViewController {
     @IBOutlet weak var displayedEmail: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        FetchProfileInfo().getEmailIntoProfile({ (email) in
-            self.displayedEmail.text = email
-        })
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        FetchProfileInfo().getEmailIntoProfile { (email) in
+            self.displayedEmail.text = email
+        }
+    }
+
 }
