@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct FacebookUser: Decodable {
-    let email: String
-    let id: String
-    let name: String
-    let picture
-}
+//struct FacebookUser: Decodable {
+//    let email: String
+//    let id: String
+//    let name: String
+//    let picture
+//}
 
 /*
  BUDERDATA  :  Optional({

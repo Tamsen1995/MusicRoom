@@ -42,8 +42,8 @@ extension LogRegController {
     func switchToHomeScreen() {
         print("\nInside of switchStoryboard\n") // TESTING
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "HomeScreen") as UIViewController
-        self.present(controller, animated: true, completion: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "HomeScreen")//instantiateViewController(withIdentifier: "HomeScreen") as UIViewController
+        self.present(controller, animated: false, completion: nil)
     }
     
 }
